@@ -1,3 +1,13 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product-imgs {
+  transition: 1s ease all;
+  max-width: 100%;
+  &:hover {
+    box-shadow: 0px 0px 3px 0px grey;
+    border-radius: 2px;
+    transition: 1s ease all;
+  }
+}
