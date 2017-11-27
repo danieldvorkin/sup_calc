@@ -1,20 +1,24 @@
-<h3>Welcome to PremeCalc</h3>
+<h3>DropList</h3><br/>
 <ul class="collapsible popout" data-collapsible="accordion">
-  <% @data.each do |d| %>
+  <% @data.each_with_index do |d, index| %>
     <li>
-      <div class="collapsible-header"><%= d.keys.first %></div>
+      <div class="collapsible-header <%= index == 0 ? 'active' : '' %>">Week <%= WelcomeHelper.main_label(@data, index) %></div>
       <div class="collapsible-body">
         <div class="row">
           <% d[d.keys.first].each do |prod| %>
-            <div class="col s6 m4 l2">
+            <div class="col s6 m4 l3">
               <a href="#modal-<%= prod[:title] %>" class="waves-effect waves-light modal-trigger">
                 <img class="product-imgs" src="http://supremecommunity.com/<%= prod[:link] %>"/>
+                <span class="new badge red" data-badge-caption="">
+                  <%= WelcomeHelper.price_badge(prod[:price]) %>
+                </span> 
               </a>
             </div>
             <div id="modal-<%= prod[:title] %>" class="modal">
               <div class="modal-content">
                 <h4><%= prod[:title] %></h4>
                 <img class="product-imgs" src="http://supremecommunity.com/<%= prod[:link] %>"/>
+                <%= WelcomeHelper.price_badge(prod[:price]) %>
               </div>
             </div>
           <% end %>
@@ -23,6 +27,7 @@
     </li>
   <% end %>
 </ul>
+
 <script>
 $(document).ready(function(){
    $('.modal').modal();

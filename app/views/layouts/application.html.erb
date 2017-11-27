@@ -3,14 +3,23 @@
   <head>
     <title>SupCalc</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo center">PremeCalc</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          </ul>
+        </div>
+      </nav>
+    </div>
     <div class="container">
-      <%= yield %>
+      <%= yield %> 
     </div>
   </body>
 </html>
