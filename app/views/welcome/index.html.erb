@@ -2,17 +2,27 @@
 <ul class="collapsible popout" data-collapsible="accordion">
   <% @data.each_with_index do |d, index| %>
     <li>
-      <div class="collapsible-header <%= index == 0 ? 'active' : '' %>">Week <%= WelcomeHelper.main_label(@data, index) %></div>
+      <div class="collapsible-header <%= index == 0 ? 'active' : '' %>">Week <%= WelcomeHelper.main_label(@data, index, d.keys.first) %></div>
       <div class="collapsible-body">
         <div class="row">
           <% d[d.keys.first].each do |prod| %>
-            <div class="col s6 m4 l3">
-              <a href="#modal-<%= prod[:title] %>" class="waves-effect waves-light modal-trigger">
-                <img class="product-imgs" src="http://supremecommunity.com/<%= prod[:link] %>"/>
-                <span class="new badge red" data-badge-caption="">
-                  <%= WelcomeHelper.price_badge(prod[:price]) %>
-                </span> 
-              </a>
+            <div class="col s6 m4 l4">
+              <img class="product-imgs" src="http://supremecommunity.com/<%= prod[:link] %>"/>
+              <div class="row">
+                <div class="col s4 m4 l4">
+                  <a href="#modal-<%= prod[:title] %>" class="waves-effect waves-light modal-trigger">
+                    <span class="new badge blue" data-badge-caption="">View</span>
+                  </a>
+                </div>
+                <div class="col s4 m4 l4">
+                  <span class="new badge red" data-badge-caption=""><%= WelcomeHelper.price_badge(prod[:price]) %></span>
+                </div>
+                <div class="col s4 m4 l4">
+                  <a href="#" class="addToCart">
+                    <span class="new badge green" data-badge-caption="~ Add ~"></span>
+                  </a>
+                </div>
+              </div>
             </div>
             <div id="modal-<%= prod[:title] %>" class="modal">
               <div class="modal-content">
@@ -31,5 +41,9 @@
 <script>
 $(document).ready(function(){
    $('.modal').modal();
+   $('.addToCart').click(function(e){
+     e.preventDefault();
+     alert("Feature coming soon....");
+   });
  });
 </script>
