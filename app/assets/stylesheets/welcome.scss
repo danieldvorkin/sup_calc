@@ -29,3 +29,24 @@ nav ul a {
 nav ul a:nth-last-child {
   color: white !important;
 }
+
+
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px) and (orientation : portrait){
+  .brand-logo {
+    img {
+      height: 50px !important;
+      left: 80px;
+      position: relative;
+      top: 3px;
+    }
+  }
+  nav a {
+    color: initial !important;
+  }
+  .card-content {
+    min-height: initial !important;
+  }
+  .mobile-cart-label {
+    font-size: 18px !important;
+  }
+}
