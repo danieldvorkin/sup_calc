@@ -12,7 +12,41 @@
     There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
   </p>
 <% else %>
-  <% @order_items.each do |order_item| %>
-    <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
-  <% end %>
+  <br/>
+  <h1>Shopping Cart</h1><br/>
+
+  <div class="shopping-cart">
+
+    <div class="column-labels">
+      <label class="product-image">Image</label>
+      <label class="product-details">Product</label>
+      <label class="product-price">Price</label>
+      <label class="product-price">CAN Total</label>
+      <label class="product-price">Sub Total</label>
+      <label class="product-removal">Remove</label>
+    </div>
+    <% @order_items.each do |order_item| %>
+      <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+    <% end %>
+    <div class="totals">
+      <div class="totals-item">
+        <label>USD Subtotal</label>
+        <div class="totals-value" id="cart-subtotal">
+          <%= WelcomeHelper.usd_subtotal(@order_items.map(&:product).pluck(:price)) %>
+        </div>
+      </div>
+      <div class="totals-item">
+        <label>USD Total</label>
+        <div class="totals-value" id="cart-shipping">
+          <%= WelcomeHelper.usd_total(@order_items.map(&:product).pluck(:price)) %>
+        </div>
+      </div>
+      <div class="totals-item totals-item-total">
+        <label>Grand Total (CAD)</label>
+        <div class="totals-value" id="cart-total">
+          <%= WelcomeHelper.cad_total(@order_items.map(&:product).pluck(:price)) %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>

@@ -1,4 +1,19 @@
-<div class="well">
+<div class="product">
+  <div class="product-image">
+    <img src="http://supremecommunity.com/<%= product.link %>">
+  </div>
+  <div class="product-details">
+    <div class="product-title"><%= product.name %></div>
+  </div>
+  <div class="product-price"><%= product.price.split(" / ").shift(1)[0] %></div>
+  <div class="product-price"><%= WelcomeHelper.subtotal_price(product.price.split(" / ").shift(1)[0]) %></div>
+  <div class="product-price"><%= WelcomeHelper.can_price(product.price.split(" / ").shift(1)[0]) %></div>
+  <div class="product-removal">
+    <%= link_to "X", order_item, { method: :delete, remote: true, class: "remove-product" } %>
+  </div>
+</div>
+
+<!-- <div class="well">
 
   <div class="row">
     <div class="col-xs-8">
@@ -24,4 +39,4 @@
     </div>
 
   </div>
-</div>
+</div> -->

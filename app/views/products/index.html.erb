@@ -6,24 +6,25 @@
       <div class="collapsible-body">
         <div class="row">
           <% d[1].reverse.each do |prod| %>
-            <div class="col s6 m4 l4">
-              <img class="product-imgs" src="http://supremecommunity.com/<%= prod[:link] %>"/>
-              <div class="row">
-                <div class="col s4 m4 l4">
-                  <a href="#modal-<%= prod[:name] %>" class="waves-effect waves-light modal-trigger">
-                    <span class="new badge blue" data-badge-caption="">View</span>
-                  </a>
-                </div>
-                <div class="col s4 m4 l4">
-                  <span class="new badge red" data-badge-caption=""><%= WelcomeHelper.price_badge(prod[:price]) %></span>
-                </div>
+            <div class="card col s12 m4 l4">
+              <div class="card-image" style="max-height: 350px;">
+                <img class="product-imgs" src="http://supremecommunity.com/<%= prod[:link] %>"/>
                 <%= form_for @order_item, remote: true do |f| %>
-                  <div class="col s4 m4 l4">
-                    <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
-                    <%= f.hidden_field :product_id, value: prod[:id] %>
-                    <%= f.submit "Add", class: "new badge green", style: 'text-decoration: none !important;color: white !important;' %>
-                  </div>
+                  <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
+                  <%= f.hidden_field :product_id, value: prod[:id] %>
+                  <%= button_tag(type: "submit", class: "btn-floating halfway-fab waves-effect waves-light green") do %>
+                    <i class="material-icons">add</i>
+                  <% end %>
                 <% end %>
+              </div>
+              <div class="card-content" style="min-height: 120px;">
+                <p><%= prod[:name] %></p>
+              </div>
+              <div class="card-action">
+                <a href="#modal-<%= prod[:name] %>" class="waves-effect waves-light modal-trigger">
+                  <span class="new badge blue" data-badge-caption="">View</span>
+                </a>
+                <span class="new badge red" data-badge-caption=""><%= WelcomeHelper.price_badge(prod[:price]) %></span>
               </div>
             </div>
             <div id="modal-<%= prod[:name] %>" class="modal">
@@ -31,6 +32,11 @@
                 <h4><%= prod[:title] %></h4>
                 <img class="product-imgs" style="height:400px !important" src="http://supremecommunity.com/<%= prod[:link] %>"/>
                 <%= WelcomeHelper.price_badge(prod[:price]) %>
+                <%= form_for @order_item, remote: true do |f| %>
+                  <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
+                  <%= f.hidden_field :product_id, value: prod[:id] %>
+                  <span class="modal-add-to-cart new badge green"><%= f.submit "Add", class: "new badge green", style: 'text-decoration: none !important;color: white !important;-webkit-appearance: media-enter-fullscreen-button;' %></span>
+                <% end %>
               </div>
             </div>
           <% end %>
@@ -47,5 +53,8 @@ $(document).ready(function(){
      e.preventDefault();
      alert("Feature coming soon....");
    });
+   $('.modal-add-to-cart').click(function(){
+     $('.modal').modal();
+   })
  });
 </script>
