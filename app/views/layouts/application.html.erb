@@ -12,8 +12,16 @@
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="#!" class="brand-logo"><%= image_tag("logo.png", style: "height:63px;") %></a>
+          <a href="#!" class="brand-logo"><%= image_tag("logomobile.png", style: "height:63px;") %></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse">
+            <div id="menuToggle">
+              <input type="checkbox" />
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse button1">
             <small class="mobile-cart-label"><%= current_order.order_items.size %> Items in Cart</small>
           </a>
           <ul class="right hide-on-med-and-down">
@@ -30,6 +38,7 @@
       </script>
     </div>
     <ul class="side-nav" id="mobile-demo">
+      <li style="height:32px;"><i style="float: right;margin: 10px;" class="material-icons close">close</i></li>
       <li><%= link_to "Homepage", root_path %></li>
       <li><%= link_to "Droplists", products_path %></li>
       <li><%= render 'layouts/cart' %></li>
@@ -54,4 +63,11 @@
       <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
     </div>
   </footer>
+  <script>
+    $(function(){
+      $('.close').click(function(){
+        $('.button-collapse').sideNav('hide');
+      });
+    });
+  </script>
 </html>
