@@ -29,9 +29,11 @@
               <span></span>
             </div>
           </a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse button1">
-            <small class="mobile-cart-label"><%= current_order.order_items.size %> Items in Cart</small>
-          </a>
+          <% if user_signed_in? %>
+            <a href="#" data-activates="mobile-demo" class="button-collapse button1">
+              <small class="mobile-cart-label"><%= current_order.order_items.size %> Items in Cart</small>
+            </a>
+          <% end %>
           <ul class="right hide-on-med-and-down">
             <li><%= link_to "Homepage", root_path %></li>
             <li><%= link_to "Droplists", products_path %></li>
@@ -39,7 +41,7 @@
               <li>
                 <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
               </li>
-              <li style="background: green;"><%= render 'layouts/cart' %></li>
+              <li class="cart-button"><%= render 'layouts/cart' %></li>
             <% else %>
               <li><%= link_to('Login', new_user_session_path)  %> </li>
             <% end %>
@@ -61,7 +63,7 @@
         <li>
           <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
         </li>
-        <li style="background: green;"><%= render 'layouts/cart' %></li>
+        <li class="cart-button"><%= render 'layouts/cart' %></li>
       <% else %>
         <li><%= link_to('Login', new_user_session_path)  %> </li>
       <% end %>

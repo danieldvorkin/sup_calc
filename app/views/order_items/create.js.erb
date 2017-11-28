@@ -3,9 +3,9 @@ alert("not valid.")
 <% else %>
   $(".cart-text").html("<%= j render 'layouts/cart' %>")
   $('.mobile-cart-label').text("<%= current_order.order_items.size %> Items in Cart");
-  
-  $("#prod_<%= current_order.order_items.last.product.id %> form .green").hide();
-  $("#prod_<%= current_order.order_items.last.product.id %> form .red").show();
+
+  $("#prod_<%= current_order.order_items.last.product.id %> form .green").css('visibility', 'hidden');
+  $("#prod_<%= current_order.order_items.last.product.id %> form .red").css('visibility', 'visible');
   $("#prod_<%= current_order.order_items.last.product.id %> form .red").attr('href', "order_items/<%= current_order.order_items.last.id %>")
 
 <% end %>
