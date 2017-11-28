@@ -10,6 +10,9 @@ end
 gem 'rails', '~> 5.1.4'
 gem 'materialize-sass'
 gem 'material_icons'
+gem 'pgreset'
+
+gem 'devise'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server

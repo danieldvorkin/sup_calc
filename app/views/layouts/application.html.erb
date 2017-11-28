@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SupCalc</title>
+    <title>PremeCalc</title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/manifest.json">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="apple-mobile-web-app-title" content="PremeCalc">
+    <meta name="application-name" content="PremeCalc">
+    <meta name="theme-color" content="#ffffff">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -27,7 +35,15 @@
           <ul class="right hide-on-med-and-down">
             <li><%= link_to "Homepage", root_path %></li>
             <li><%= link_to "Droplists", products_path %></li>
-            <li style="background: green;"><%= render 'layouts/cart' %></li>
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+              </li>
+              <li style="background: green;"><%= render 'layouts/cart' %></li>
+            <% else %>
+              <li><%= link_to('Login', new_user_session_path)  %> </li>
+            <% end %>
+
           </ul>
         </div>
       </nav>
@@ -43,7 +59,11 @@
       <li><%= link_to "Droplists", products_path %></li>
       <li><%= render 'layouts/cart' %></li>
     </ul>
-    <div style="padding:10px 10px 0px 10px;"><%= yield %></div>
+    <div style="padding:10px 10px 0px 10px;">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
   </body>
   <footer class="page-footer">
     <div class="row">
