@@ -2,4 +2,5 @@
 alert("not valid.")
 <% else %>
   $(".cart-text").html("<%= j render 'layouts/cart' %>")
+  $('.mobile-cart-label').text("<%= current_order.order_items.size %> Items in Cart");
 <% end %>
