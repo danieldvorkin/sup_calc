@@ -40,8 +40,15 @@ nav ul a:nth-last-child {
 .cart-button {
   background: green;
 }
+.regcontainer {
+  margin: 25px 22%;
+}
+
 
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+  .regcontainer {
+    margin: 25px 10%;
+  }
   .product-price {
     width: 85px;
   }
