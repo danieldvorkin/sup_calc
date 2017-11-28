@@ -1,60 +1,78 @@
 <h3>DropList</h3><br/>
-<ul class="collapsible popout" data-collapsible="accordion">
+<div class="row">
   <% @data.each_with_index do |d, index| %>
-    <li>
-      <div class="collapsible-header <%= index == 0 ? 'active' : '' %>">Week <%= WelcomeHelper.main_label(d) %></div>
-      <div class="collapsible-body">
-        <div class="row">
-          <% d[1].reverse.each do |prod| %>
-            <div class="card col s12 m4 l3">
-              <div class="card-image" style="max-height: 350px;">
-                <img class="product-imgs" src="http://supremecommunity.com/<%= prod[:link] %>"/>
-                <%= form_for @order_item, remote: true do |f| %>
-                  <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
-                  <%= f.hidden_field :product_id, value: prod[:id] %>
-                  <%= button_tag(type: "submit", class: "btn-floating halfway-fab waves-effect waves-light green") do %>
-                    <i class="material-icons">add</i>
-                  <% end %>
-                <% end %>
-              </div>
-              <div class="card-content" style="min-height: 120px;">
-                <p><%= prod[:name] %></p>
-              </div>
-              <div class="card-action">
-                <a href="#modal-<%= prod[:name] %>" class="waves-effect waves-light modal-trigger">
-                  <span class="new badge blue" data-badge-caption="">View</span>
-                </a>
-                <span class="new badge red" data-badge-caption=""><%= WelcomeHelper.price_badge(prod[:price]) %></span>
-              </div>
+    <div class="col s12 m12 l12">
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header <%= index == 0 ? 'active' : '' %>">Week <%= WelcomeHelper.main_label(d) %></div>
+          <div class="collapsible-body">
+            <div class="row">
+              <% d[1].reverse.each do |prod| %>
+                <div class="card col s12 m4 l3" id="prod_<%= prod[:id] %>">
+                  <div class="card-image" style="max-height: 350px;">
+                    <img class="product-imgs" src="http://supremecommunity.com/<%= prod[:link] %>"/>
+                    <%= form_for @order_item, remote: true do |f| %>
+                      <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
+                      <%= f.hidden_field :product_id, value: prod[:id] %>
+                      <% if current_order.order_items.find_by_product_id(prod[:id]).present? %>
+                        <%= link_to("order_items/#{current_order.order_items.find_by_product_id(prod[:id]).try(:id)}", { method: :delete, remote: true, class: "btn-floating halfway-fab waves-effect waves-light red" }, style: 'visibility: visible;') do %>
+                          <i class="material-icons">remove</i>
+                        <% end %>
+                        <%= button_tag(type: "submit", class: "btn-floating halfway-fab waves-effect waves-light green", style: "visibility: hidden;") do %>
+                          <i class="material-icons">add</i>
+                        <% end %>
+                      <% else %>
+                        <%= link_to("order_items/#{current_order.order_items.find_by_product_id(prod[:id]).try(:id)}", { method: :delete, remote: true, class: "btn-floating halfway-fab waves-effect waves-light red" }, style: 'visibility: hidden;') do %>
+                          <i class="material-icons">remove</i>
+                        <% end %>
+                        <%= button_tag(type: "submit", class: "btn-floating halfway-fab waves-effect waves-light green", style: "visibility: visible;") do %>
+                          <i class="material-icons">add</i>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="card-content" style="min-height: 120px;">
+                    <p><%= prod[:name] %></p>
+                  </div>
+                  <div class="card-action">
+                    <a href="#modal-<%= prod[:name] %>" class="waves-effect waves-light modal-trigger">
+                      <span class="new badge blue" data-badge-caption="">View</span>
+                    </a>
+                    <span class="new badge red" data-badge-caption=""><%= WelcomeHelper.price_badge(prod[:price]) %></span>
+                  </div>
+                </div>
+                <div id="modal-<%= prod[:name] %>" class="modal">
+                  <div class="modal-content">
+                    <h4><%= prod[:title] %></h4>
+                    <img class="product-imgs" style="height:400px !important" src="http://supremecommunity.com/<%= prod[:link] %>"/>
+                    <%= WelcomeHelper.price_badge(prod[:price]) %>
+                    <%= form_for @order_item, remote: true do |f| %>
+                      <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
+                      <%= f.hidden_field :product_id, value: prod[:id] %>
+                      <span class="modal-add-to-cart new badge green"><%= f.submit "Add", class: "new badge green", style: 'text-decoration: none !important;color: white !important;-webkit-appearance: media-enter-fullscreen-button;' %></span>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
             </div>
-            <div id="modal-<%= prod[:name] %>" class="modal">
-              <div class="modal-content">
-                <h4><%= prod[:title] %></h4>
-                <img class="product-imgs" style="height:400px !important" src="http://supremecommunity.com/<%= prod[:link] %>"/>
-                <%= WelcomeHelper.price_badge(prod[:price]) %>
-                <%= form_for @order_item, remote: true do |f| %>
-                  <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
-                  <%= f.hidden_field :product_id, value: prod[:id] %>
-                  <span class="modal-add-to-cart new badge green"><%= f.submit "Add", class: "new badge green", style: 'text-decoration: none !important;color: white !important;-webkit-appearance: media-enter-fullscreen-button;' %></span>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </li>
+          </div>
+        </li>
+      </ul>
+    </div>
   <% end %>
-</ul>
+</div>
 
 <script>
 $(document).ready(function(){
-   $('.modal').modal();
-   $('.addToCart').click(function(e){
-     e.preventDefault();
-     alert("Feature coming soon....");
-   });
-   $('.modal-add-to-cart').click(function(){
-     $('.modal').modal();
-   })
+  $('.modal').modal();
+
+  $('.addToCart').click(function(e){
+    e.preventDefault();
+    alert("Feature coming soon....");
+  });
+
+  $('.modal-add-to-cart').click(function(){
+    $('.modal').modal();
+  })
  });
 </script>

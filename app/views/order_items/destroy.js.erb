@@ -1,3 +1,6 @@
 $(".cart-text").html("<%= escape_javascript(render 'layouts/cart') %>")
 $(".shopping-cart").html("<%= escape_javascript(render 'carts/shopping_cart') %>")
 $('.mobile-cart-label').text("<%= current_order.order_items.size %> Items in Cart");
+
+$("#prod_<%= @product_id %> form .green").show();
+$("#prod_<%= @product_id %> form .red").hide();
