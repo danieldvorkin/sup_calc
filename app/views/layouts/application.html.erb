@@ -57,7 +57,14 @@
       <li style="height:32px;"><i style="float: right;margin: 10px;" class="material-icons close">close</i></li>
       <li><%= link_to "Homepage", root_path %></li>
       <li><%= link_to "Droplists", products_path %></li>
-      <li><%= render 'layouts/cart' %></li>
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+        </li>
+        <li style="background: green;"><%= render 'layouts/cart' %></li>
+      <% else %>
+        <li><%= link_to('Login', new_user_session_path)  %> </li>
+      <% end %>
     </ul>
     <div style="padding:10px 10px 0px 10px;">
       <p class="notice"><%= notice %></p>
