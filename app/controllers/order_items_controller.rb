@@ -4,6 +4,10 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.new(order_item_params)
     @order.save
     session[:order_id] = @order.id
+    
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update
@@ -11,6 +15,10 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.find(params[:id])
     @order_item.update_attributes(order_item_params)
     @order_items = @order.order_items
+    
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
@@ -18,6 +26,10 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.find(params[:id])
     @order_item.destroy
     @order_items = @order.order_items
+    
+    respond_to do |format|
+      format.js
+    end
   end
 private
   def order_item_params
