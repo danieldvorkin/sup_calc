@@ -6,7 +6,7 @@
       <div class="collapsible-body">
         <div class="row">
           <% d[1].reverse.each do |prod| %>
-            <div class="card col s12 m4 l4">
+            <div class="card col s12 m4 l3">
               <div class="card-image" style="max-height: 350px;">
                 <img class="product-imgs" src="http://supremecommunity.com/<%= prod[:link] %>"/>
                 <%= form_for @order_item, remote: true do |f| %>
