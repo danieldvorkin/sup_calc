@@ -12,13 +12,14 @@ doc = Nokogiri::HTML(open("https://www.supremecommunity.com/season/latest/dropli
 all_dates = doc.css('.droplistSelection a').map{|d| d['href'] }.uniq
 
 Product.delete_all
+OrderItem.delete_all
 
 all_dates.each do |date|
   puts "Starting #{date}"
   link = "https://www.supremecommunity.com" + date
   page = Nokogiri::HTML(open(link))
   cards = page.css('.card-details')
-  
+
   cards.each do |card|
     puts "Building product: #{card.css('.card__body h5').text}"
     Product.create!(
@@ -34,6 +35,7 @@ all_dates.each do |date|
   puts "======================================"
 end
 
+Order.delete_all
 OrderStatus.delete_all
 OrderStatus.create! id: 1, name: "In Progress"
 OrderStatus.create! id: 2, name: "Placed"
