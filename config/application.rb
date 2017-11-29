@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module SupCalc
   class Application < Rails::Application
+    require 'figaro'
+    Figaro.load
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
