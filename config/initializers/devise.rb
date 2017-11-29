@@ -1,8 +1,11 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-
-  config.omniauth :facebook, ENV['facebook_app_id'], ENV['facebook_app_secret'], callback_url: 'http://localhost:3000/users/auth/facebook/callback', display: 'popup'
+  if Rails.env == "production"
+    config.omniauth :facebook, ENV['facebook_app_id'], ENV['facebook_app_secret'], callback_url: 'http://premecalc.herokuapp.com/users/auth/facebook/callback', display: 'popup'
+  else
+    config.omniauth :facebook, ENV['facebook_app_id'], ENV['facebook_app_secret'], callback_url: 'http://localhost:3000/users/auth/facebook/callback', display: 'popup'
+  end
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
