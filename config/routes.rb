@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :products, only: [:index]
+  resources :orders, only: [:index, :destroy]
   resource :cart, only: [:show]
-  resources :order_items, only: [:create, :update, :destroy], defaults: { format: 'js' }
+  resources :order_items, only: [:create, :update, :destroy, :save_order], defaults: { format: 'js' }
+  get '/order_items/save_order/:id', to: 'order_items#save_order', as: 'save_order'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#index'

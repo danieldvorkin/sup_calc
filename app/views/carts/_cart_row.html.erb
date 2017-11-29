@@ -8,9 +8,11 @@
   <div class="product-price"><%= product.price.split(" / ").shift(1)[0] %></div>
   <div class="product-price"><%= WelcomeHelper.subtotal_price(product.price.split(" / ").shift(1)[0]) %></div>
   <div class="product-price"><%= WelcomeHelper.can_price(product.price.split(" / ").shift(1)[0]) %></div>
-  <div class="product-removal">
-    <%= link_to "X", order_item, { method: :delete, remote: true, class: "remove-product" } %>
-  </div>
+  <% if controller.controller_name != "orders" %>
+    <div class="product-removal">
+      <%= link_to "X", order_item, { method: :delete, remote: true, class: "remove-product" } %>
+    </div>
+  <% end %>
 </div>
 
 <!-- <div class="well">

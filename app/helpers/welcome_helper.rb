@@ -15,8 +15,7 @@ module WelcomeHelper
   end
 
   def self.find_conversion
-    data = JSON.parse(open('http://www.apilayer.net/api/live?access_key=5bafa8fc45d193be34466698e56f2bb0&currencies=CAD&format=1').string)
-    data["quotes"]["USDCAD"]
+    @conv.nil? ? ApplicationHelper.get_conversion : @conv
   end
 
   def self.subtotal_price(price)

@@ -2,8 +2,17 @@ class OrderItemsController < ApplicationController
   def create
     @order = current_order
     @order_item = @order.order_items.new(order_item_params)
+    @order.user = current_user
     @order.save
     session[:order_id] = @order.id
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def save_order
+    session[:order_id] = nil
 
     respond_to do |format|
       format.js
@@ -32,6 +41,7 @@ class OrderItemsController < ApplicationController
       format.js
     end
   end
+
 private
   def order_item_params
     params.require(:order_item).permit(:quantity, :product_id)

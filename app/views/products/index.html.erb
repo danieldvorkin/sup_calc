@@ -1,5 +1,5 @@
 <h3>DropList</h3><br/>
-<div class="row">
+<div class="row" style="margin-bottom: 10%;">
   <% @data.each_with_index do |d, index| %>
     <div class="col s12 m12 l12">
       <ul class="collapsible popout" data-collapsible="accordion">
@@ -14,6 +14,7 @@
                     <%= form_for @order_item, remote: true do |f| %>
                       <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
                       <%= f.hidden_field :product_id, value: prod[:id] %>
+                      
                       <% if current_order.order_items.find_by_product_id(prod[:id]).present? %>
                         <%= link_to("order_items/#{current_order.order_items.find_by_product_id(prod[:id]).try(:id)}", { method: :delete, remote: true, class: "btn-floating halfway-fab waves-effect waves-light red" }, style: 'visibility: visible;') do %>
                           <i class="material-icons">remove</i>
@@ -49,6 +50,7 @@
                     <%= form_for @order_item, remote: true do |f| %>
                       <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
                       <%= f.hidden_field :product_id, value: prod[:id] %>
+                      
                       <span class="modal-add-to-cart new badge green"><%= f.submit "Add", class: "new badge green", style: 'text-decoration: none !important;color: white !important;-webkit-appearance: media-enter-fullscreen-button;' %></span>
                     <% end %>
                   </div>

@@ -47,6 +47,7 @@
           <%= WelcomeHelper.cad_total(@order_items.map(&:product).pluck(:price)) %>
         </div>
       </div>
+      <%= link_to 'Save Order', save_order_path(current_order), remote: true %>
     </div>
   </div>
 <% end %>

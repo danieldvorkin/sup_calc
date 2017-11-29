@@ -1,0 +1,5 @@
+$(".cart-text").html("<%= escape_javascript(render 'layouts/cart') %>")
+$('.mobile-cart-label').text("0 Items in Cart");
+$('.column-labels, .product, .totals').hide();
+alert("Order Saved!")
+$('.container .shopping-cart').html("<p class='text-center'>Your order has been saved and can be viewed in Saved Orders</p>")

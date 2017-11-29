@@ -1,0 +1,46 @@
+<div class="container" style="margin-bottom:10%">
+  <h3 style="margin-bottom:3%;">Saved Orders</h3>
+  <hr/>
+  <div class="shopping-cart">
+
+    <% @orders.each do |order| %>
+      <div class="order_<%= order.id %>">
+        <h5>Order#: <%= order.id %>2017</h5>
+        <div class="column-labels">
+          <label class="product-image">Image</label>
+          <label class="product-details">Product</label>
+          <label class="product-price">USD Sub Total</label>
+          <label class="product-price">USD Total</label>
+          <label class="product-price">CAN Total</label>
+          <label class="product-removal">Remove</label>
+        </div>
+        <% order.order_items.each do |order_item| %>
+          <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+        <% end %>
+        <div class="totals">
+          <div class="totals-item">
+            <label>USD Subtotal</label>
+            <div class="totals-value" id="cart-subtotal">
+              <%= WelcomeHelper.usd_subtotal(order.order_items.map(&:product).pluck(:price)) %>
+            </div>
+          </div>
+          <div class="totals-item">
+            <label>USD Total</label>
+            <div class="totals-value" id="cart-shipping">
+              <%= WelcomeHelper.usd_total(order.order_items.map(&:product).pluck(:price)) %>
+            </div>
+          </div>
+          <div class="totals-item totals-item-total">
+            <label>Grand Total (CAD)</label>
+            <div class="totals-value" id="cart-total">
+              <%= WelcomeHelper.cad_total(order.order_items.map(&:product).pluck(:price)) %>
+            </div>
+          </div>
+        </div>
+        <%= link_to "Delete Order", order, method: :delete, remote: true, class: "remove-product" %>
+        <br/>
+        <hr/>
+      </div>
+    <% end %>
+  </div>
+</div>

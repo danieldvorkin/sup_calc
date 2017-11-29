@@ -43,7 +43,18 @@ nav ul a:nth-last-child {
 .regcontainer {
   margin: 25px 22%;
 }
-
+html {
+    position: relative;
+    min-height: 100%;
+}
+footer {
+    background-color: orange;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow:hidden;
+}
 
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
   .regcontainer {
