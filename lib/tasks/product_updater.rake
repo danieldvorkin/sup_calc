@@ -36,6 +36,6 @@ namespace :product_updater do
     end
 
     puts count > 0 ? "#{count} #{"product".pluralize(count)} Added!! Product Updater Complete!!" : "Product Updater Complete!!!"
-    count > 0 ? UserMailer.products_updated(count).deliver_now : ''
+    count > 0 ? UserMailer.products_updated(count).deliver_now : UserMailer.no_products_updated.deliver_now
   end
 end
