@@ -69,6 +69,15 @@ footer {
 .reset-order {
     position: relative;
 }
+
+.card .card-content {
+    padding: 10px !important;
+}
+
+.btn-floating.halfway-fab {
+    bottom: 15px !important;
+}
+
 // iPhone 6 (portrait)
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
   .save-order {

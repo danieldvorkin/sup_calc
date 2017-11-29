@@ -12,6 +12,12 @@
                   <div class="card col s12 m4 l3" id="prod_<%= prod[:id] %>">
                     <div class="card-image" style="max-height: 350px;">
                       <img class="product-imgs" src="http://supremecommunity.com/<%= prod[:link] %>"/>
+                    </div>
+                    <div class="card-content valign-wrapper" style="min-height: 90px;">
+                      <p><%= prod[:name] %></p>
+                    </div>
+                    <div class="card-content" style="min-height: 43px;">
+                      <span class="new badge red" data-badge-caption="" style="font-size:15px;margin: 0px -5px;position: relative;left: -68%;"><%= WelcomeHelper.price_badge(prod[:price]) %></span>
                       <%= form_for @order_item, remote: true do |f| %>
                         <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
                         <%= f.hidden_field :product_id, value: prod[:id] %>
@@ -33,13 +39,6 @@
                         <% end %>
                       <% end %>
                     </div>
-                    <div class="card-content" style="min-height: 120px;">
-                      <p><%= prod[:name] %></p>
-                    </div>
-                    <div class="card-content" style="min-height: 35px;padding:0px;">
-                      <span class="new badge red" data-badge-caption="" style="font-size:15px;"><%= WelcomeHelper.price_badge(prod[:price]) %></span>
-                    </div>
-
                   </div>
                 <% end %>
               </div>

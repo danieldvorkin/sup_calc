@@ -9,8 +9,8 @@
         <div class="column-labels">
           <label class="product-image">Image</label>
           <label class="product-details">Product</label>
-          <label class="product-price">USD Sub Total</label>
-          <label class="product-price">USD Total</label>
+          <label class="product-price">Sub Total</label>
+          <label class="product-price">Total</label>
           <label class="product-price">CAN Total</label>
           <label class="product-removal">Remove</label>
         </div>
@@ -37,7 +37,7 @@
             </div>
           </div>
         </div>
-        <%= link_to "Delete Order", order, method: :delete, remote: true, class: "remove-product" %>
+        <%= link_to "Delete Order", order, method: :delete, remote: true, class: "btn btn-primary red remove-product" %>
         <br/>
         <hr/>
       </div>
