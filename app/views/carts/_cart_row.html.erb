@@ -5,6 +5,7 @@
   <div class="product-details">
     <div class="product-title"><%= product.name %></div>
   </div>
+  
   <div class="product-price"><%= product.price.split(" / ").shift(1)[0] %></div>
   <div class="product-price"><%= WelcomeHelper.subtotal_price(product.price.split(" / ").shift(1)[0]) %></div>
   <div class="product-price"><%= WelcomeHelper.can_price(product.price.split(" / ").shift(1)[0]) %></div>

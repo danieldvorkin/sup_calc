@@ -56,12 +56,34 @@ footer {
     overflow:hidden;
 }
 
+.page-footer {
+    padding-top: 0px !important;
+    color: #fff;
+    background-color: #ee6e73;
+}
+
+.totals-value {
+  font-size:12px;
+}
+
+.save-order {
+    position: relative;
+}
+
+.reset-order {
+    position: relative;
+}
+// iPhone 6 (portrait)
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+  .save-order {
+
+  }
   .regcontainer {
     margin: 25px 10%;
   }
   .product-price {
-    width: 85px;
+    width: 18%;
+    font-size:12px;
   }
   .column-labels {
     display: block;
@@ -160,19 +182,8 @@ footer {
   }
 }
 
-@media only screen and (min-device-width : 414px) and (max-device-width : 736px) and (orientation : portrait){
-  .product-price {
-    width: 85px;
-  }
-  .column-labels {
-    display: block;
-  }
-  .column-labels .product-details {
-    display:none;
-  }
-  .cart-button {
-    background: #fff !important;
-  }
+// iPhone 6 (landscape)
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape) {
   .brand-logo {
     img {
       height: 52px !important;
@@ -261,7 +272,24 @@ footer {
   }
 }
 
-@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape) {
+// iPhone 6 Plus (portrait)
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px) and (orientation : portrait){
+  .save-order {
+      
+  }
+  .product-price {
+    width: 20%;
+    font-size:12px;
+  }
+  .column-labels {
+    display: block;
+  }
+  .column-labels .product-details {
+    display:none;
+  }
+  .cart-button {
+    background: #fff !important;
+  }
   .brand-logo {
     img {
       height: 52px !important;

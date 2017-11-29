@@ -13,41 +13,49 @@
   </p>
 <% else %>
   <br/>
-  <h1>Shopping Cart</h1><br/>
+  <h3>Shopping Cart</h3><br/>
+  <h6>Order #: <%= current_order.id %>2017</h6><br/>
 
   <div class="shopping-cart">
 
     <div class="column-labels">
       <label class="product-image">Image</label>
       <label class="product-details">Product</label>
-      <label class="product-price">USD Sub Total</label>
-      <label class="product-price">USD Total</label>
+      <label class="product-price">Sub Total</label>
+      <label class="product-price">Total</label>
       <label class="product-price">CAN Total</label>
       <label class="product-removal">Remove</label>
     </div>
     <% @order_items.each do |order_item| %>
       <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
     <% end %>
-    <div class="totals">
-      <div class="totals-item">
-        <label>USD Subtotal</label>
-        <div class="totals-value" id="cart-subtotal">
-          <%= WelcomeHelper.usd_subtotal(@order_items.map(&:product).pluck(:price)) %>
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <div class="totals">
+          <div class="totals-item">
+            <label>USD Subtotal</label>
+            <div class="totals-value" id="cart-subtotal">
+              <%= WelcomeHelper.usd_subtotal(@order_items.map(&:product).pluck(:price)) %>
+            </div>
+          </div>
+          <div class="totals-item">
+            <label>USD Total</label>
+            <div class="totals-value" id="cart-shipping">
+              <%= WelcomeHelper.usd_total(@order_items.map(&:product).pluck(:price)) %>
+            </div>
+          </div>
+          <div class="totals-item totals-item-total">
+            <label>Grand Total (CAD)</label>
+            <div class="totals-value" id="cart-total">
+              <%= WelcomeHelper.cad_total(@order_items.map(&:product).pluck(:price)) %>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="totals-item">
-        <label>USD Total</label>
-        <div class="totals-value" id="cart-shipping">
-          <%= WelcomeHelper.usd_total(@order_items.map(&:product).pluck(:price)) %>
-        </div>
+      <div class="col s12 m12 l12" style="text-align:right;">
+        <%= link_to 'Reset Order', reset_order_path(current_order), remote: true, class: 'btn btn-primary red reset-order' %>
+        <%= link_to 'Save Order', save_order_path(current_order), remote: true, class: 'btn btn-primary save-order' %>
       </div>
-      <div class="totals-item totals-item-total">
-        <label>Grand Total (CAD)</label>
-        <div class="totals-value" id="cart-total">
-          <%= WelcomeHelper.cad_total(@order_items.map(&:product).pluck(:price)) %>
-        </div>
-      </div>
-      <%= link_to 'Save Order', save_order_path(current_order), remote: true %>
     </div>
   </div>
 <% end %>

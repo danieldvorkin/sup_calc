@@ -17,83 +17,19 @@
   </head>
 
   <body>
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo"><%= image_tag("logomobile.png", style: "height:63px;") %></a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse">
-            <div id="menuToggle">
-              <input type="checkbox" />
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </a>
-          <% if user_signed_in? %>
-            <a href="#" data-activates="mobile-demo" class="button-collapse button1">
-              <small class="mobile-cart-label"><%= current_order.order_items.size %> Items in Cart</small>
-            </a>
-          <% end %>
-          <ul class="right hide-on-med-and-down">
-            <li><%= link_to "Homepage", root_path %></li>
-            <li><%= link_to "Droplists", products_path %></li>
-            <% if user_signed_in? %>
-              <li><%= link_to("Saved Orders", orders_path) %></li>
-              <li><%= link_to "Account", edit_user_registration_path %></li>
-              <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
-              <li class="cart-button"><%= render 'layouts/cart' %></li>
-            <% else %>
-              <li><%= link_to('Login', new_user_session_path) %></li>
-            <% end %>
+    <%= render partial: 'layouts/main_nav' %>
+    <%= render partial: 'layouts/mobile_nav' %>
 
-          </ul>
-        </div>
-      </nav>
-      <script>
-        $(document).ready(function(){
-          $(".button-collapse").sideNav();
-        });
-      </script>
-    </div>
-    <ul class="side-nav" id="mobile-demo">
-      <li style="height:32px;"><i style="float: right;margin: 10px;" class="material-icons close">close</i></li>
-      <li><%= link_to "Homepage", root_path %></li>
-      <li><%= link_to "Droplists", products_path %></li>
-      <% if user_signed_in? %>
-        <li><%= link_to("Saved Orders", orders_path) %></li>
-        <li><%= link_to "Account", edit_user_registration_path %></li>
-        <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
-        <li class="cart-button"><%= render 'layouts/cart' %></li>
-      <% else %>
-        <li><%= link_to('Login', new_user_session_path)  %> </li>
-      <% end %>
-    </ul>
     <div style="padding:10px 10px 0px 10px;">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
     </div>
   </body>
-  <footer class="page-footer">
-    <div class="row">
-      <div class="col l6 s12">
-        <h5 class="white-text">Stay Connected!</h5>
-        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-      </div>
-      <div class="col l4 offset-l2 s12">
-        <h5 class="white-text">Links</h5>
-        <ul>
-          <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      PremeCalc © 2017 Copyright
-      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-    </div>
-  </footer>
+  <%= render partial: 'layouts/footer' %>
   <script>
     $(function(){
+      $(".button-collapse").sideNav();
       $('.close').click(function(){
         $('.button-collapse').sideNav('hide');
       });

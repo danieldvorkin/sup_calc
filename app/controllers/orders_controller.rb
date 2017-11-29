@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = current_user.orders
+    @orders = current_user.orders.where(order_status_id: 2)
   end
 
   def destroy
