@@ -4,6 +4,7 @@ namespace :product_updater do
     require 'open-uri'
     puts "Welcome to Product Upodater"
 
+    count = 0
     doc = Nokogiri::HTML(open("https://www.supremecommunity.com/season/latest/droplists/"))
     all_dates = doc.css('.droplistSelection a').map{|d| d['href'] }.uniq
 
@@ -13,11 +14,14 @@ namespace :product_updater do
       page = Nokogiri::HTML(open(link))
       cards = page.css('.card-details')
 
+
       cards.each do |card|
         puts "Search for product: #{card.css('.card__body h5').text}"
         next if Product.find_by_name(card.css('.card__body h5').text).present?
 
+        count += 1
         puts "Building product: #{card.css('.card__body h5').text}"
+
         Product.create!(
           name: card.css('.card__body h5').text,
           title: card.css('.card__body h5').text,
@@ -30,5 +34,8 @@ namespace :product_updater do
       puts "======================================"
       puts "======================================"
     end
+
+    puts count > 0 ? "#{count} #{"product".pluralize(count)} Added!! Product Updater Complete!!" : "Product Updater Complete!!!"
+    UserMailer.products_updated(count).deliver_now
   end
 end
