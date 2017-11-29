@@ -7,11 +7,10 @@ class Order < ApplicationRecord
 
   def subtotal
     order_items.map do |item|
-      price = Product.find(item.product_id).price.split(" / ").shift(1)[0]
-      price.gsub(/[^0-9]/, '').to_i
+      Product.find(item.product_id).price.delete(' ').gsub("\n", "").split("/").shift(1)[0].gsub(/[^0-9]/, '').to_i
     end.sum
-
   end
+  
 private
   def set_order_status
     self.order_status_id = 1

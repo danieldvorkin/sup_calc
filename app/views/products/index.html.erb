@@ -8,7 +8,7 @@
             <div class="collapsible-header <%= index == 0 ? 'active' : '' %>">Week <%= WelcomeHelper.main_label(d) %></div>
             <div class="collapsible-body">
               <div class="row">
-                <% d[1].reverse.each do |prod| %>
+                <% d[1].each do |prod| %>
                   <div class="card col s12 m4 l3" id="prod_<%= prod[:id] %>">
                     <div class="card-image" style="max-height: 350px;">
                       <img class="product-imgs" src="http://supremecommunity.com/<%= prod[:link] %>"/>
@@ -36,25 +36,10 @@
                     <div class="card-content" style="min-height: 120px;">
                       <p><%= prod[:name] %></p>
                     </div>
-                    <div class="card-action">
-                      <a href="#modal-<%= prod[:name] %>" class="waves-effect waves-light modal-trigger">
-                        <span class="new badge blue" data-badge-caption="">View</span>
-                      </a>
-                      <span class="new badge red" data-badge-caption=""><%= WelcomeHelper.price_badge(prod[:price]) %></span>
+                    <div class="card-content" style="min-height: 35px;padding:0px;">
+                      <span class="new badge red" data-badge-caption="" style="font-size:15px;"><%= WelcomeHelper.price_badge(prod[:price]) %></span>
                     </div>
-                  </div>
-                  <div id="modal-<%= prod[:name] %>" class="modal">
-                    <div class="modal-content">
-                      <h4><%= prod[:title] %></h4>
-                      <img class="product-imgs" style="height:400px !important" src="http://supremecommunity.com/<%= prod[:link] %>"/>
-                      <%= WelcomeHelper.price_badge(prod[:price]) %>
-                      <%= form_for @order_item, remote: true do |f| %>
-                        <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
-                        <%= f.hidden_field :product_id, value: prod[:id] %>
 
-                        <span class="modal-add-to-cart new badge green"><%= f.submit "Add", class: "new badge green", style: 'text-decoration: none !important;color: white !important;-webkit-appearance: media-enter-fullscreen-button;' %></span>
-                      <% end %>
-                    </div>
                   </div>
                 <% end %>
               </div>
@@ -69,6 +54,7 @@
 <script>
 $(document).ready(function(){
   $('.modal').modal();
+  $('.carousel').carousel();
 
   $('.addToCart').click(function(e){
     e.preventDefault();
