@@ -3,6 +3,6 @@ class UserMailer < ApplicationMailer
 
   def products_updated(count)
     @count = count
-    mail(to: User.pluck(:email).join(", "), subject: 'Welcome to My Awesome Site')
+    mail(to: User.pluck(:email).join(", "), subject: 'Welcome to My Awesome Site', from: 'news@premecalc.com')
   end
 end
