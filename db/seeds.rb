@@ -28,7 +28,8 @@ all_dates.each do |date|
       dropweek: date,
       link: card.css('.card__top img').attr('src'),
       price: card.css('.droplist-price .label-price').text,
-      active: true
+      active: true,
+      dataId: card.attr('data-itemid')
     )
   end
   puts "======================================"
