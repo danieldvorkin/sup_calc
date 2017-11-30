@@ -1,12 +1,28 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
+
   def index
+    add_breadcrumb "Dropweeks", :products_path
     @weeks = Product.order('dropweek DESC').all.pluck(:dropweek).uniq
     @order_item = current_order.order_items.new
   end
 
   def specific_week
+    @data = {
+      season: get_season(params[:week]),
+      week: get_week(params[:week])
+    }
+    add_breadcrumb "< dropweeks", :products_path
+    add_breadcrumb "#{@data[:week]}", specific_week_path(params[:week])
     @data = Product.all.where(dropweek: params[:week])
     @order_item = current_order.order_items.new
+  end
+
+  def get_season(week)
+    week.split("/").shift(3).last
+  end
+
+  def get_week(week)
+    week.split("/").shift(5).last
   end
 end

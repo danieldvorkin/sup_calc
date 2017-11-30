@@ -23,6 +23,10 @@
     <div style="padding:10px 10px 0px 10px;">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+      <div class="container">
+        <%= render_breadcrumbs :separator => ' / '%>
+        <hr/>
+      </div>
       <%= yield %>
     </div>
   </body>

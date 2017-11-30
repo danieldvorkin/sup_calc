@@ -54,6 +54,7 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.7.3)
       debug_inspector (>= 0.0.1)
+    breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     byebug (9.1.0)
     capybara (2.16.1)
@@ -245,6 +246,7 @@ PLATFORMS
 
 DEPENDENCIES
   best_debugger
+  breadcrumbs_on_rails
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)

@@ -1,19 +1,19 @@
 <div class="container">
-  <h3>DropList</h3><br/>
-
   <div class="row" style="margin-bottom:12%;">
-    <% @weeks.each do |week, index| %>
-      <div class="col sm12 m6 l4">
+    <% @weeks.each_with_index do |week, index| %>
+      <div class="col sm12 m6 l6">
         <div class="card horizontal" id="prod_<%= index %>_week">
           <div class="card-image">
             <%= image_tag "https://supremecommunity.com#{Product.all.where(dropweek: week).first.link}" %>
           </div>
           <div class="card-stacked">
             <div class="card-content">
-              <p><%= week %></p>
+              <p>Season: <%= ProductsHelper.get_season(week) %></p>
+              <p>Release: <%= ProductsHelper.get_week(week) %></p>
+              <p>Week #: <%= (@weeks.size - index) - 1 %></p>
             </div>
             <div class="card-action">
-              <%= link_to 'View!', specific_week_path(week), class: 'btn btn-default' %>
+              <%= link_to 'View!', specific_week_path(week), class: 'btn btn-default', style: 'width:100%;' %>
             </div>
           </div>
         </div>
