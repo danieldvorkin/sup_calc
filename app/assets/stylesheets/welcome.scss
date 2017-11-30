@@ -1,6 +1,9 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.carousel .carousel-item {
+  top: -100px !important;
+}
 
 .fa-arrow-circle-left,
 .fa-arrow-circle-right {
@@ -232,7 +235,7 @@ nav ul a:nth-last-child {
 }
 
 .carousel {
-  height: 505px !important;
+  height: 400px !important;
   perspective: none !important;
   transform-style: unset !important;
   transform-origin: 0% 0% !important;

@@ -1,7 +1,7 @@
 <div class="container">
   <hr/>
 </div>
-<div class="row" style="margin-bottom:12%;">
+<div class="row" style="margin-bottom:8%;">
   <div class="carousel">
     <% @weeks.each_with_index do |week, index| %>
       <div class="col sm12 m6 l6 carousel-item" href="#item_<%= index %>!">
@@ -13,7 +13,7 @@
             <div class="card-content">
               <p>Season: <%= ProductsHelper.get_season(week) %></p>
               <p>Release: <%= ProductsHelper.get_week(week) %></p>
-              <p>Week #: <%= (@weeks.size - index) %></p>
+              <p>Week #: <%= (@weeks.size + 1) %></p>
             </div>
             <div class="card-action">
               <%= link_to 'View!', specific_week_path(week), class: 'btn btn-default', style: 'width:100%;' %>
