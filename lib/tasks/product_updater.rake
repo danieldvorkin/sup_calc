@@ -16,8 +16,17 @@ namespace :product_updater do
 
 
       cards.each do |card|
-        puts "Search for product: #{card.css('.card__body h5').text}"
-        next if Product.find_by_name(card.css('.card__body h5').text).present?
+        puts "Product: #{card.css('.card__body h5').text}"
+        product = Product.find_by_name(card.css('.card__body h5').text)
+
+        if product.link != card.css('.card__top img').attr('src')
+          product.update_attributes(link: card.css('.card__top img').attr('src'))
+          product.save
+          puts "Image Source: Updated!"
+          next
+        else
+          next if product.present?
+        end
 
         count += 1
         puts "Building product: #{card.css('.card__body h5').text}"
