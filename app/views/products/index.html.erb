@@ -1,23 +1,64 @@
 <div class="container">
+  <hr/>
   <div class="row" style="margin-bottom:12%;">
-    <% @weeks.each_with_index do |week, index| %>
-      <div class="col sm12 m6 l6">
-        <div class="card horizontal" id="prod_<%= index %>_week">
-          <div class="card-image">
-            <%= image_tag "https://supremecommunity.com#{Product.all.where(dropweek: week).first.link}" %>
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <p>Season: <%= ProductsHelper.get_season(week) %></p>
-              <p>Release: <%= ProductsHelper.get_week(week) %></p>
-              <p>Week #: <%= (@weeks.size - index) - 1 %></p>
+
+    <div class="carousel">
+      <% @weeks.each_with_index do |week, index| %>
+        <div class="col sm12 m6 l6 carousel-item" href="#item_<%= index %>!">
+          <div class="card horizontal" id="prod_<%= index %>_week">
+            <div class="card-image">
+              <%= image_tag "https://supremecommunity.com#{Product.all.where(dropweek: week).first.link}" %>
             </div>
-            <div class="card-action">
-              <%= link_to 'View!', specific_week_path(week), class: 'btn btn-default', style: 'width:100%;' %>
+            <div class="card-stacked">
+              <div class="card-content">
+                <p>Season: <%= ProductsHelper.get_season(week) %></p>
+                <p>Release: <%= ProductsHelper.get_week(week) %></p>
+                <p>Week #: <%= (@weeks.size - index) %></p>
+              </div>
+              <div class="card-action">
+                <%= link_to 'View!', specific_week_path(week), class: 'btn btn-default', style: 'width:100%;' %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+
+    <div class="mobile-view">
+      <% @weeks.each_with_index do |week, index| %>
+        <div class="col sm12 m6 l6">
+          <div class="card horizontal" id="prod_<%= index %>_week">
+            <div class="card-image">
+              <%= image_tag "https://supremecommunity.com#{Product.all.where(dropweek: week).first.link}" %>
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                <p>Season: <%= ProductsHelper.get_season(week) %></p>
+                <p>Release: <%= ProductsHelper.get_week(week) %></p>
+                <p>Week #: <%= (@weeks.size - index) %></p>
+              </div>
+              <div class="card-action">
+                <%= link_to 'View!', specific_week_path(week), class: 'btn btn-default', style: 'width:100%;' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 </div>
+
+<script>
+$(function(){
+  $('.carousel').carousel({ noWrap: true });
+
+  if($(window).width() < 1024) {
+    $('.mobile-view').show();
+    $('.carousel').hide();
+  } else {
+    $('.mobile-view').hide();
+    $('.carousel').show();
+  }
+})
+</script>

@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   def index
     add_breadcrumb "Dropweeks", :products_path
     @weeks = Product.order('dropweek DESC').all.pluck(:dropweek).uniq
+    @weeks.delete(@weeks.last)
     @order_item = current_order.order_items.new
   end
 
@@ -12,8 +13,8 @@ class ProductsController < ApplicationController
       season: get_season(params[:week]),
       week: get_week(params[:week])
     }
-    add_breadcrumb "< dropweeks", :products_path
-    add_breadcrumb "#{@data[:week]}", specific_week_path(params[:week])
+    add_breadcrumb "< Dropweeks", :products_path
+    add_breadcrumb "Release: #{@data[:week]}", specific_week_path(params[:week])
     @data = Product.all.where(dropweek: params[:week])
     @order_item = current_order.order_items.new
   end

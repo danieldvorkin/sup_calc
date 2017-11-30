@@ -2,6 +2,87 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.regcontainer {
+  .new_user {
+    input {
+      text-align: center;
+    }
+  }
+  .login {
+    text-align: center;
+    width:70%;
+    top: 10%;
+    margin: 0 auto;
+    background: gainsboro;
+    padding: 40px 5%;
+    border-radius: 5px;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 0px rgba(255, 255, 255, 0.07);
+  }
+
+  input[type="text"], input[type="password"] {
+    width: 250px;
+    padding: 25px 0px;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    outline: none;
+    color: #46485c;
+  }
+
+  input[type="submit"] {
+    background: #b5cd60;
+    border: 0;
+    width: 250px;
+    height: 40px;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  input[type="submit"]:hover {
+    background: #16aa56;
+  }
+
+  .forgot {
+    margin-top: 30px;
+    display: block;
+    font-size: 11px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .forgot:hover {
+    margin-top: 30px;
+    display: block;
+    font-size: 11px;
+    text-align: center;
+    font-weight: bold;
+    color: #6d7781;
+  }
+
+  .remember {
+    padding: 30px 0px;
+    font-size: 12px;
+    text-indent: 25px;
+    line-height: 15px;
+  }
+
+  ::-webkit-input-placeholder {
+    color: #46485c;
+  }
+
+  [placeholder]:focus::-webkit-input-placeholder {
+    transition: all 0.2s linear;
+    transform: translate(10px, 0);
+    opacity: 0;
+  }
+  [type="checkbox"] + label {
+    padding-left:0px !important;
+  }
+}
+
+
+
+
 .product-imgs {
   max-width: 100%;
 }
@@ -92,11 +173,14 @@ footer {
 
 // iPhone 6 (portrait)
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-  .price-label {
-    margin: -18px 15px !important;
+  footer {
+    bottom: -8%;
   }
   .regcontainer {
-    margin: 25px 10%;
+    margin: 10px -18%;
+  }
+  .price-label {
+    margin: -18px 15px !important;
   }
   .product-price {
     width: 18%;

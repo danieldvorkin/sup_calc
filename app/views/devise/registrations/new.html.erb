@@ -1,29 +1,28 @@
-<h2>Sign up</h2>
+<div class="regcontainer">
+  <div class='login'>
+    <%= link_to user_facebook_omniauth_authorize_url(), class: "btn social facebook", style: 'background: #395CA9 !important; margin-bottom: 25px;' do %>
+      <i style="position:relative; left:-10px;" class="fa fa-facebook"></i>Sign Up with Facebook
+    <% end %>
+    <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center;margin-bottom:50px;">
+      <span style="font-size: 40px; background-color: gainsboro; padding: 0 10px;">
+        OR
+      </span>
+    </div>
+    <h2>Sign Up Today!</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+      <%= f.submit "Sign up" %>
+    <% end %>
+    <%= render "devise/shared/links" %>
+</div>

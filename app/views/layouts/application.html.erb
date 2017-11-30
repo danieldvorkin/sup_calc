@@ -14,6 +14,7 @@
     <meta name="theme-color" content="#ffffff">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -25,7 +26,6 @@
       <p class="alert"><%= alert %></p>
       <div class="container">
         <%= render_breadcrumbs :separator => ' / '%>
-        <hr/>
       </div>
       <%= yield %>
     </div>
