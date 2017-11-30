@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def specific_week
-    @data = Product.all.where(dropweek: "/season/fall-winter2017/droplist/2017-11-30")
+    @data = Product.all.where(dropweek: params[:week])
     @order_item = current_order.order_items.new
   end
 end
