@@ -19,7 +19,7 @@ namespace :product_updater do
       cards.each do |card|
         puts "Product: #{card.css('.card__body h5').text}"
         product = Product.find_by_name(card.css('.card__body h5').text)
-        
+
         if product.link != card.css('.card__top img').attr('src').value
           product.update_attributes(link: card.css('.card__top img').attr('src'))
           product.save

@@ -3,6 +3,7 @@
 
 <% if user_signed_in? %>
   <li><%= link_to("Saved Orders", orders_path) %></li>
+  <li><%= link_to("Restocks", restocks_path) %></li>
   <li><%= link_to "Account", edit_user_registration_path %></li>
   <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
   <li class="cart-button"><%= render 'layouts/cart' %></li>

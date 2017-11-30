@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module SupCalc
   class Application < Rails::Application
+    config.time_zone = 'Eastern Time (US & Canada)'
     require 'figaro'
     Figaro.load
     # Initialize configuration defaults for originally generated Rails version.
