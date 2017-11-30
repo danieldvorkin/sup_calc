@@ -478,3 +478,9 @@ footer {
     transform: rotate(-45deg) translate(0, -1px);
   }
 }
+
+@media only screen and (min-width: 993px) {
+  .carousel-item {
+    width: 45% !important;
+  }
+}
