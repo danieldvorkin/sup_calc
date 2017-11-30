@@ -100,7 +100,7 @@
   width: auto !important;
 }
 .carousel {
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .regcontainer {
@@ -111,21 +111,23 @@
   }
   .login {
     text-align: center;
-    width:70%;
+    width: 70%;
     top: 10%;
     margin: 0 auto;
     background: gainsboro;
     padding: 40px 5%;
     border-radius: 5px;
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 0px rgba(255, 255, 255, 0.07);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3),
+      inset 0px 1px 0px rgba(255, 255, 255, 0.07);
   }
 
-  input[type="text"], input[type="password"] {
+  input[type="text"],
+  input[type="password"] {
     width: 250px;
     padding: 25px 0px;
     background: transparent;
     border: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     outline: none;
     color: #46485c;
   }
@@ -177,18 +179,15 @@
     opacity: 0;
   }
   [type="checkbox"] + label {
-    padding-left:0px !important;
+    padding-left: 0px !important;
   }
 }
-
-
-
 
 .product-imgs {
   max-width: 100%;
 }
 .product-container {
-   border:1px solid silver;
+  border: 1px solid silver;
 }
 
 span.badge {
@@ -199,10 +198,23 @@ nav .nav-wrapper {
   background: white;
 }
 
-nav ul a {
-  color: black !important;
+nav {
+  ul {
+    a {
+      color: black !important;
+    }
+  }
 }
 
+nav {
+  ul {
+    .cart-button {
+      a {
+        color: white !important;
+      }
+    }
+  }
+}
 
 nav ul a:nth-last-child {
   color: white !important;
@@ -222,47 +234,47 @@ nav ul a:nth-last-child {
   margin: 25px 22%;
 }
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 footer {
-    background-color: orange;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    overflow:hidden;
+  background-color: orange;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
 .page-footer {
-    padding-top: 0px !important;
-    color: #fff;
-    background-color: #ee6e73;
+  padding-top: 0px !important;
+  color: #fff;
+  background-color: #ee6e73;
 }
 
 .totals-value {
-  font-size:12px;
+  font-size: 12px;
 }
 
 .save-order {
-    position: relative;
+  position: relative;
 }
 
 .reset-order {
-    position: relative;
+  position: relative;
 }
 
 .card .card-content {
-    padding: 10px !important;
+  padding: 10px !important;
 }
 
 .btn-floating.halfway-fab {
-    bottom: 15px !important;
+  bottom: 15px !important;
 }
 
 .card.horizontal {
   .card-image {
-    padding:10px;
+    padding: 10px;
     img {
       max-width: 100% !important;
       width: 100% !important;
@@ -273,7 +285,7 @@ footer {
 }
 
 // iPhone 6 (portrait)
-@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
   footer {
     bottom: -8%;
   }
@@ -289,13 +301,13 @@ footer {
   }
   .product-price {
     width: 18%;
-    font-size:12px;
+    font-size: 12px;
   }
   .column-labels {
     display: block;
   }
   .column-labels .product-details {
-    display:none;
+    display: none;
   }
   .cart-button {
     background: #fff !important;
@@ -311,7 +323,7 @@ footer {
     color: initial !important;
   }
   .button1 {
-    float:right !important;
+    float: right !important;
   }
   .card-content {
     min-height: initial !important;
@@ -359,9 +371,8 @@ footer {
 
     transform-origin: 4px 0px;
 
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                opacity 0.55s ease;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
   }
 
   #menuToggle span:first-child {
@@ -389,7 +400,7 @@ footer {
 }
 
 // iPhone 6 (landscape)
-@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: landscape) {
   .brand-logo {
     img {
       height: 52px !important;
@@ -401,7 +412,7 @@ footer {
     color: initial !important;
   }
   .button1 {
-    float:right !important;
+    float: right !important;
   }
   .card-content {
     min-height: initial !important;
@@ -449,9 +460,8 @@ footer {
 
     transform-origin: 4px 0px;
 
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                opacity 0.55s ease;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
   }
 
   #menuToggle span:first-child {
@@ -479,19 +489,18 @@ footer {
 }
 
 // iPhone 6 Plus (portrait)
-@media only screen and (min-device-width : 414px) and (max-device-width : 736px) and (orientation : portrait){
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: portrait) {
   .save-order {
-
   }
   .product-price {
     width: 20%;
-    font-size:12px;
+    font-size: 12px;
   }
   .column-labels {
     display: block;
   }
   .column-labels .product-details {
-    display:none;
+    display: none;
   }
   .cart-button {
     background: #fff !important;
@@ -507,7 +516,7 @@ footer {
     color: initial !important;
   }
   .button1 {
-    float:right !important;
+    float: right !important;
   }
   .card-content {
     min-height: initial !important;
@@ -555,9 +564,8 @@ footer {
 
     transform-origin: 4px 0px;
 
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                opacity 0.55s ease;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
   }
 
   #menuToggle span:first-child {

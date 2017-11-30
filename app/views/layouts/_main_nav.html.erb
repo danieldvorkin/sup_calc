@@ -1,7 +1,12 @@
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo"><%= image_tag("logomobile.png", style: "height:63px;") %></a>
+      <div class="mobile-logo">
+        <a href="<%= current_user.present? ? products_path : root_path %>" class="brand-logo"><%= image_tag("logomobile.png", style: "height:63px;") %></a>
+      </div>
+      <div class="desktop-logo">
+        <a href="<%= current_user.present? ? products_path : root_path %>" class="brand-logo"><%= image_tag("desktop-logo.png", style: "height:63px;") %></a>
+      </div>
 
       <a href="#" data-activates="mobile-demo" class="button-collapse">
         <div id="menuToggle">
@@ -24,3 +29,25 @@
     </div>
   </nav>
 </div>
+
+<script>
+  $(function(){
+    if($(window).width() < 1024){
+      $('.mobile-logo').show();
+      $('.desktop-logo').hide();
+    } else {
+      $('.mobile-logo').hide();
+      $('.desktop-logo').show();
+    }
+    
+    $( window ).resize(function() {
+      if($(window).width() < 1024){
+        $('.mobile-logo').show();
+        $('.desktop-logo').hide();
+      } else {
+        $('.mobile-logo').hide();
+        $('.desktop-logo').show();
+      }
+    });
+  });
+</script>

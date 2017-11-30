@@ -1,4 +1,13 @@
 <ul class="side-nav" id="mobile-demo">
+  <li style="height:85px;">
+    <%= link_to root_path, style: 'height: 100px;position: relative;top: -8px;padding: 0px 0px;' do %>
+      <div class="user-view" style="position:initial;padding:0px 0px 0px 0px !important;">
+        <div class="background">
+          <%= image_tag("supreme.png", style: 'height: 96px;') %>        
+        </div>
+      </div>
+    <% end %>
+  </li>
   <li style="height:32px;"><i style="float: right;margin: 10px;" class="material-icons close">close</i></li>
   <%= render partial: 'layouts/menu_options' %>
 </ul>
