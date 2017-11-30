@@ -23,7 +23,7 @@ namespace :product_updater do
       puts "======================================"
       cards.each_with_index do |card|  
         id = card.attr("data-itemid")
-        product = Product.find_by_dataId(id)
+        product = Product.find_by_name(card.css('.card__body h5').text)
         
         if product.nil?
           Product.create!(
