@@ -21,8 +21,16 @@ namespace :product_updater do
         if product.nil?
           puts "Skipping"
           next
-        elsif product.link != card.css('.card__top img').attr('src').value
-          product.update_attributes(link: card.css('.card__top img').attr('src'))
+        elsif product.link != card.css('.card__top img').attr('src').value || product.price != card.css('.droplist-price .label-price').text
+          params = {
+            name: card.css('.card__body h5').text,
+            title: card.css('.card__body h5').text,
+            dropweek: date,
+            link: card.css('.card__top img').attr('src'),
+            price: card.css('.droplist-price .label-price').text,
+            active: true
+          }
+          product.update_attributes(params)
           product.save
           img_count += 1
           puts "Image Source: Updated!"
