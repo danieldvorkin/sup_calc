@@ -5,6 +5,7 @@ namespace :product_updater do
     puts "Welcome to Product Upodater"
 
     count = 0
+    img_count = 0
     doc = Nokogiri::HTML(open("https://www.supremecommunity.com/season/latest/droplists/"))
     all_dates = doc.css('.droplistSelection a').map{|d| d['href'] }.uniq
 
@@ -22,6 +23,7 @@ namespace :product_updater do
         if product.link != card.css('.card__top img').attr('src')
           product.update_attributes(link: card.css('.card__top img').attr('src'))
           product.save
+          img_count += 1
           puts "Image Source: Updated!"
           next
         else
@@ -45,6 +47,7 @@ namespace :product_updater do
     end
 
     puts count > 0 ? "#{count} #{"product".pluralize(count)} Added!! Product Updater Complete!!" : "Product Updater Complete!!!"
-    count > 0 ? UserMailer.products_updated(count).deliver_now : UserMailer.no_products_updated.deliver_now
+
+    img_count > 0 ? UserMailer.products_updated(img_count).deliver_now : UserMailer.no_products_updated.deliver_now
   end
 end
