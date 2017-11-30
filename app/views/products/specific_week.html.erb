@@ -1,0 +1,35 @@
+<div class="row container" style="margin-bottom: 12%;">
+  <% @data.each do |prod| %>
+    <div class="card col s12 m4 l3" id="prod_<%= prod[:id] %>">
+      <div class="card-image" style="max-height: 350px;">
+        <img class="product-imgs" src="http://supremecommunity.com<%= prod[:link] %>"/>
+      </div>
+      <div class="card-content valign-wrapper" style="min-height: 90px;">
+        <p><%= prod[:name] %></p>
+      </div>
+      <div class="card-content" style="min-height: 43px;">
+        <span class="new badge red price-label" data-badge-caption="" style="font-size:15px;margin: -10px -5px;position: relative;left: -65%;"><%= prod.label %></span>
+        <%= form_for @order_item, remote: true do |f| %>
+          <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
+          <%= f.hidden_field :product_id, value: prod[:id] %>
+
+          <% if current_order.order_items.find_by_product_id(prod[:id]).present? %>
+            <%= link_to("order_items/#{current_order.order_items.find_by_product_id(prod[:id]).try(:id)}", { method: :delete, remote: true, class: "btn-floating halfway-fab waves-effect waves-light red" }, style: 'visibility: visible;') do %>
+              <i class="material-icons">remove</i>
+            <% end %>
+            <%= button_tag(type: "submit", class: "btn-floating halfway-fab waves-effect waves-light green", style: "visibility: hidden;") do %>
+              <i class="material-icons">add</i>
+            <% end %>
+          <% else %>
+            <%= link_to("order_items/#{current_order.order_items.find_by_product_id(prod[:id]).try(:id)}", { method: :delete, remote: true, class: "btn-floating halfway-fab waves-effect waves-light red" }, style: 'visibility: hidden;') do %>
+              <i class="material-icons">remove</i>
+            <% end %>
+            <%= button_tag(type: "submit", class: "btn-floating halfway-fab waves-effect waves-light green", style: "visibility: visible;") do %>
+              <i class="material-icons">add</i>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

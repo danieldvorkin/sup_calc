@@ -1,67 +1,23 @@
 <div class="container">
   <h3>DropList</h3><br/>
-  <div class="row" style="margin-bottom: 12%;">
-    <% @data.each_with_index do |d, index| %>
-      <div class="col s12 m12 l12">
-        <ul class="collapsible popout" data-collapsible="accordion">
-          <li>
-            <div class="collapsible-header <%= index == 0 ? 'active' : '' %>">Week <%= WelcomeHelper.main_label(d) %></div>
-            <div class="collapsible-body">
-              <div class="row">
-                <% d[1].each do |prod| %>
-                  <div class="card col s12 m4 l3" id="prod_<%= prod[:id] %>">
-                    <div class="card-image" style="max-height: 350px;">
-                      <img class="product-imgs" src="http://supremecommunity.com<%= prod[:link] %>"/>
-                    </div>
-                    <div class="card-content valign-wrapper" style="min-height: 90px;">
-                      <p><%= prod[:name] %></p>
-                    </div>
-                    <div class="card-content" style="min-height: 43px;">
-                      <span class="new badge red price-label" data-badge-caption="" style="font-size:15px;margin: -10px -5px;position: relative;left: -65%;"><%= prod.label %></span>
-                      <%= form_for @order_item, remote: true do |f| %>
-                        <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
-                        <%= f.hidden_field :product_id, value: prod[:id] %>
 
-                        <% if current_order.order_items.find_by_product_id(prod[:id]).present? %>
-                          <%= link_to("order_items/#{current_order.order_items.find_by_product_id(prod[:id]).try(:id)}", { method: :delete, remote: true, class: "btn-floating halfway-fab waves-effect waves-light red" }, style: 'visibility: visible;') do %>
-                            <i class="material-icons">remove</i>
-                          <% end %>
-                          <%= button_tag(type: "submit", class: "btn-floating halfway-fab waves-effect waves-light green", style: "visibility: hidden;") do %>
-                            <i class="material-icons">add</i>
-                          <% end %>
-                        <% else %>
-                          <%= link_to("order_items/#{current_order.order_items.find_by_product_id(prod[:id]).try(:id)}", { method: :delete, remote: true, class: "btn-floating halfway-fab waves-effect waves-light red" }, style: 'visibility: hidden;') do %>
-                            <i class="material-icons">remove</i>
-                          <% end %>
-                          <%= button_tag(type: "submit", class: "btn-floating halfway-fab waves-effect waves-light green", style: "visibility: visible;") do %>
-                            <i class="material-icons">add</i>
-                          <% end %>
-                        <% end %>
-                      <% end %>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
+  <div class="row" style="margin-bottom:12%;">
+    <% @weeks.each do |week, index| %>
+      <div class="col sm12 m6 l4">
+        <div class="card horizontal" id="prod_<%= index %>_week">
+          <div class="card-image">
+            <%= image_tag "https://supremecommunity.com#{Product.all.where(dropweek: week).first.link}" %>
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p><%= week %></p>
             </div>
-          </li>
-        </ul>
+            <div class="card-action">
+              <%= link_to 'View!', specific_week_path(week), class: 'btn btn-default' %>
+            </div>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
 </div>
-
-<script>
-$(document).ready(function(){
-  $('.modal').modal();
-  $('.carousel').carousel();
-
-  $('.addToCart').click(function(e){
-    e.preventDefault();
-    alert("Feature coming soon....");
-  });
-
-  $('.modal-add-to-cart').click(function(){
-    $('.modal').modal();
-  })
- });
-</script>

@@ -78,6 +78,18 @@ footer {
     bottom: 15px !important;
 }
 
+.card.horizontal {
+  .card-image {
+    padding:10px;
+    img {
+      max-width: 100% !important;
+      width: 100% !important;
+      height: 85% !important;
+      margin: 0 auto !important;
+    }
+  }
+}
+
 // iPhone 6 (portrait)
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
   .price-label {

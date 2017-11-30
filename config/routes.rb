@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :products, only: [:index]
+  get '/products/:week', to: 'products#specific_week', as: 'specific_week'
   resources :orders, only: [:index, :destroy]
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy, :save_order], defaults: { format: 'js' }
