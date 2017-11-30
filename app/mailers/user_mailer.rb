@@ -1,8 +1,9 @@
 class UserMailer < ApplicationMailer
   default from: 'news@premecalc.com'
 
-  def products_updated(count)
+  def products_updated(count, img_count)
     @count = count
+    @img_count = img_count
     mail(to: User.pluck(:email).join(", "), subject: 'PremeCalc :: New Product Alerts', from: 'news@premecalc.com')
   end
 

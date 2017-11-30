@@ -19,8 +19,8 @@ namespace :product_updater do
       cards.each do |card|
         puts "Product: #{card.css('.card__body h5').text}"
         product = Product.find_by_name(card.css('.card__body h5').text)
-
-        if product.link != card.css('.card__top img').attr('src')
+        
+        if product.link != card.css('.card__top img').attr('src').value
           product.update_attributes(link: card.css('.card__top img').attr('src'))
           product.save
           img_count += 1
@@ -46,8 +46,8 @@ namespace :product_updater do
       puts "======================================"
     end
 
-    puts count > 0 ? "#{count} #{"product".pluralize(count)} Added!! Product Updater Complete!!" : "Product Updater Complete!!!"
+    puts (count + img_count) > 0 ? "New Products Added!! Product Updater Complete!!" : "Product Updater Complete!!!"
 
-    img_count > 0 ? UserMailer.products_updated(img_count).deliver_now : UserMailer.no_products_updated.deliver_now
+    (count + img_count) > 0 ? UserMailer.products_updated(count, img_count).deliver_now : UserMailer.no_products_updated.deliver_now
   end
 end
