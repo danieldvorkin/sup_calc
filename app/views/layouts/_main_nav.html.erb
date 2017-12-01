@@ -19,7 +19,7 @@
 
       <% if user_signed_in? %>
         <a href="#" data-activates="mobile-demo" class="button-collapse button1">
-          <small class="mobile-cart-label"><%= current_order.order_items.size %> Items in Cart</small>
+          <small class="mobile-cart-label"><%= current_order.order_items.size %> <i class="fa fa-shopping-cart"></i></small>
         </a>
       <% end %>
 
@@ -39,7 +39,7 @@
       $('.mobile-logo').hide();
       $('.desktop-logo').show();
     }
-    
+
     $( window ).resize(function() {
       if($(window).width() < 1024){
         $('.mobile-logo').show();

@@ -1,6 +1,6 @@
 $(".cart-text").html("<%= escape_javascript(render 'layouts/cart') %>")
 $(".shopping-cart").html("<%= escape_javascript(render 'carts/shopping_cart') %>")
-$('.mobile-cart-label').text("<%= current_order.order_items.size %> Items in Cart");
+$('.mobile-cart-label').html("<%= current_order.order_items.size %><i class='fa fa-shopping-cart'></i>");
 
 $("#prod_<%= @product_id %> form .green").css('visibility', 'visible');
 $("#prod_<%= @product_id %> form .red").css('visibility', 'hidden');

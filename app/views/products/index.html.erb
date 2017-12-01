@@ -7,7 +7,7 @@
       <div class="col sm12 m6 l6" href="#item_<%= index %>!">
         <div class="card horizontal" id="prod_<%= index %>_week">
           <div class="card-image">
-            <%= image_tag "https://supremecommunity.com#{Product.all.where(dropweek: week).first.link}" %>
+            <%= image_tag "https://supremecommunity.com#{Product.all.where(dropweek: week).first.link}", style: 'max-height:390px;' %>
           </div>
           <div class="card-stacked">
             <div class="card-content">
@@ -24,7 +24,7 @@
     <% end %>
   </div>
   <br/>
-  <!-- <div class="container">
+  <!-- <div class="container indicator-container">
     <div class="row" style="height:55px !important;">
       <div class="col sm6 m6 l6" style="text-align:right;">
         <i class="fa fa-arrow-circle-left fa-3x" style="cursor:pointer;"></i>
