@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
   def index
     add_breadcrumb "Dropweeks", :products_path
     @weeks = Product.order('dropweek DESC').all.pluck(:dropweek).uniq
-    @weeks.delete(@weeks.last)
     @order_item = current_order.order_items.new
   end
 
