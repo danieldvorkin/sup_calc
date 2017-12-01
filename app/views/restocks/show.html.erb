@@ -1,19 +1,17 @@
-<div class="container restock-container">
+<div class="container restock-container" style="margin-bottom: 8%;">
   <div class="timeline">
     <% @data.each_with_index do |item| %>
       <div class="timeline-event">
         <a class="card timeline-content horizontal" target="_blank" href="http://www.supremenewyork.com/shop/<%= item[item.keys.first][:sup_link] %>">
           <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator restock-img" src="http://<%= item[item.keys.first][:img] %>" style="max-height:250px;">
+            <img class="activator restock-img" src="http://<%= item[item.keys.first][:img] %>" style="height: 80px !important;width: auto !important;">
           </div>
           <div class="card-stacked">
             <div class="card-content">
               <%= item.keys.first %><br/>
               <small>
                 ( <%= item[item.keys.first][:color] %> | <%= item[item.keys.first][:size] %> )
-              </small>
-            </div>
-            <div class="card-action">
+              </small><hr/>
               <small><%= item[item.keys.first][:time] %></small>
             </div>
           </div>

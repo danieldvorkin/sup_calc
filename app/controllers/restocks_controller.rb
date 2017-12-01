@@ -11,7 +11,7 @@ class RestocksController < ApplicationController
     keepLoopin = true
     count = 1
 
-    while(keepLoopin && count < 3)
+    while(keepLoopin && count < 5)
       puts "Starting Page: #{count}"
       
       doc = Nokogiri::HTML(open("https://www.supremecommunity.com/restocks/#{params[:id]}#{count == 1 ? '' : "/#{count}"}"))
@@ -19,7 +19,7 @@ class RestocksController < ApplicationController
 
       items.each_with_index do |item, index|
         restocked = Time.zone.parse(item.css('.restock-time small time').attr('datetime').value)
-        restock_msg = "about #{TimeDifference.between(Time.zone.now, restocked).humanize} ago"
+        restock_msg = "#{TimeDifference.between(Time.zone.now, restocked).humanize} ago"
 
         if items.size == 0
           keepLoopin = false
