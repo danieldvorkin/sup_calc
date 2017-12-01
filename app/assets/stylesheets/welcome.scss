@@ -1,6 +1,13 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.breadcrumb {
+  nav {
+    a {
+      color: black !important;
+    }
+  }
+}
 .carousel .carousel-item {
   top: -100px !important;
 }
@@ -300,10 +307,9 @@ footer {
 
 // iPhone 6 (portrait)
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
-  .indicator-container{
-    display:none !important;
+  .indicator-container {
+    display: none !important;
   }
-
 
   footer {
     bottom: -8%;

@@ -24,8 +24,14 @@
     <div style="padding:10px 10px 0px 10px;">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <div class="container">
-        <%= render_breadcrumbs :separator => ' / '%>
+      <div class=" breadcrumb container">
+        <nav>
+          <div class="nav-wrapper" style="background: white !important;padding: 0px 5%; color: black;">
+            <div class="col s12">
+              <%= render_breadcrumbs :separator => ' / ' %>
+            </div>
+          </div>
+        </nav>
       </div>
       <%= yield %>
     </div>
