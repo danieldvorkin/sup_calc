@@ -1,9 +1,12 @@
 class RestocksController < ApplicationController
   def index
+    add_breadcrumb "Countries", :restocks_path
     @places = %w(eu us jpn)
   end
   
   def show
+    add_breadcrumb "All Countries", :restocks_path
+    add_breadcrumb "#{params[:id].upcase} Restock"
     @data = []
     keepLoopin = true
     count = 1
