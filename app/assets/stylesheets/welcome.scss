@@ -235,7 +235,7 @@ nav ul a:nth-last-child {
 }
 
 .carousel {
-  height: 400px !important;
+  height: 450px !important;
   perspective: none !important;
   transform-style: unset !important;
   transform-origin: 0% 0% !important;
@@ -300,6 +300,11 @@ footer {
 
 // iPhone 6 (portrait)
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
+  .indicator-container{
+    display:none !important;
+  }
+
+
   footer {
     bottom: -8%;
   }
