@@ -11,6 +11,7 @@ gem 'rails', '~> 5.1.4'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'pgreset'
+gem 'time_difference'
 
 gem 'omniauth-facebook'
 gem 'devise'

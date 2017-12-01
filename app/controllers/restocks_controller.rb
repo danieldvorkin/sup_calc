@@ -10,7 +10,7 @@ class RestocksController < ApplicationController
 
       items.each_with_index do |item, index|
         restocked = Time.zone.parse(item.css('.restock-time small time').attr('datetime').value)
-        restock_msg = "about #{((Time.zone.now - restocked) / 3600).round} #{ 'hour'.pluralize(((Time.zone.now - restocked) / 3600).round)} ago"
+        restock_msg = "about #{TimeDifference.between(Time.zone.now, restocked).humanize} ago"
 
         if items.size == 0
           keepLoopin = false
