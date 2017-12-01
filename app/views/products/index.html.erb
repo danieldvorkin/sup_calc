@@ -13,7 +13,7 @@
             <div class="card-content">
               <p>Season: <%= ProductsHelper.get_season(week) %></p>
               <p>Release: <%= ProductsHelper.get_week(week) %></p>
-              <p>Week #: <%= (@weeks.size + 1) %></p>
+              <p>Week #: <%= ((@weeks.size - index) + 1) %></p>
             </div>
             <div class="card-action">
               <%= link_to 'View!', specific_week_path(week), class: 'btn btn-default', style: 'width:100%;' %>
