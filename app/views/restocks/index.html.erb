@@ -1,28 +1,14 @@
-<div class="container restock-container">
-  <h3>US Restocks!!!!</h3>
-  <div class="timeline">
-
-    <% @data.each_with_index do |item| %>
-      <div class="timeline-event">
-        <a class="card timeline-content horizontal" target="_blank" href="http://www.supremenewyork.com/shop/<%= item[item.keys.first][:sup_link] %>">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator restock-img" src="http://<%= item[item.keys.first][:img] %>">
+<div class="container restock-container row">
+  <% @places.each do |place| %>
+    <div class="col sm12 m4 lg4">
+      <%= link_to restock_country_path(place) do %>
+        <div class="card">
+          <div class="card-content">
+            <img style="max-width:100% !important;" alt="<%= place.upcase %>" class="border--round" src="https://www.supremecommunity.com/s/img/restocks/<%= place %>.png">
+            <span class="card-title" style="text-align:center !important;"><%= place.titleize %></span>
           </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <%= item.keys.first %><br/>
-              <small>
-                ( <%= item[item.keys.first][:color] %> | <%= item[item.keys.first][:size] %> )
-              </small>
-            </div>
-            <div class="card-action">
-              <small><%= item[item.keys.first][:time] %></small>
-            </div>
-          </div>
-        </a>
-        <div class="timeline-badge red white-text"><i class="material-icons">star</i></div>
-      </div>
-    <% end %>
-
-  </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>

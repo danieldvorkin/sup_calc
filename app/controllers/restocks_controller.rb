@@ -1,11 +1,17 @@
 class RestocksController < ApplicationController
   def index
+    @places = %w(eu us jpn)
+  end
+  
+  def show
     @data = []
     keepLoopin = true
     count = 1
+
     while(keepLoopin && count < 3)
       puts "Starting Page: #{count}"
-      doc = Nokogiri::HTML(open("https://www.supremecommunity.com/restocks/us#{count == 1 ? '' : "/#{count}"}"))
+      
+      doc = Nokogiri::HTML(open("https://www.supremecommunity.com/restocks/#{params[:id]}#{count == 1 ? '' : "/#{count}"}"))
       items = doc.css('.restock-item')
 
       items.each_with_index do |item, index|
@@ -31,5 +37,6 @@ class RestocksController < ApplicationController
       keepLoopin ? Thread.new { count += 1; puts "Page #{count - 1}: Complete!" } : next
     end
   end
-
+  
+  
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/order_items/save_order/:id', to: 'order_items#save_order', as: 'save_order'
   get '/order_items/reset_order/:id', to: 'order_items#reset_order', as: 'reset_order'
   resources :restocks
+  get '/restocks/:country', to: 'restocks#restock_country', as: 'restock_country'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#index'
