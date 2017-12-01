@@ -1,5 +1,5 @@
 namespace :product_updater do
-  
+
   desc "TODO"
   task update_products: :environment do
     require 'open-uri'
@@ -15,16 +15,16 @@ namespace :product_updater do
       link = "https://www.supremecommunity.com" + date
       page = Nokogiri::HTML(open(link))
       cards = page.css('.card-details')
-      
+
       skipped = 0
       updated2 = 0
       built = 0
-      
+
       puts "======================================"
-      cards.each_with_index do |card|  
+      cards.each_with_index do |card|
         id = card.attr("data-itemid")
         product = Product.find_by_dataId(id)
-        
+
         if product.nil?
           Product.create!(
             active: true,
@@ -45,7 +45,7 @@ namespace :product_updater do
           product.title = card.css('.card__body h5').text
           product.link = card.css('.card__top img').attr('src')
           product.price = card.css('.droplist-price .label-price').text
-          
+
           if index < 3
             product.changes.empty? ? next : Thread.new { updated += 1; updated2 += 1}
           end
@@ -59,5 +59,6 @@ namespace :product_updater do
 
     puts (count + updated) > 0 ? "New Products Added!! Product Updater Complete!!" : "Product Updater Complete!!!"
     (count + updated) > 160 ? UserMailer.products_updated(count, updated).deliver_now : nil
+    UserMailer.products_updated(count, updated).deliver_now
   end
 end
