@@ -20,21 +20,20 @@
   <body>
     <%= render partial: 'layouts/main_nav' %>
     <%= render partial: 'layouts/mobile_nav' %>
-
-    <div style="padding:10px 10px 0px 10px;">
+    <% if %w(products restocks).any? { |name| controller.controller_name.include? name } %>
+      <div class=" breadcrumb container">
+        <nav>
+          <div class="nav-wrapper" style="background: white !important;padding: 0px 5%; color: black;">
+            <div class="col s12">
+              <%= render_breadcrumbs :separator => ' / ' %>
+            </div>
+          </div>
+        </nav>
+      </div>
+    <% end %>
+    <div class="main-container" style="padding:10px 10px 0px 10px;">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <% if %w(products restocks).any? { |name| controller.controller_name.include? name } %>
-        <div class=" breadcrumb container">
-          <nav>
-            <div class="nav-wrapper" style="background: white !important;padding: 0px 5%; color: black;">
-              <div class="col s12">
-                <%= render_breadcrumbs :separator => ' / ' %>
-              </div>
-            </div>
-          </nav>
-        </div>
-      <% end %>
       <%= yield %>
     </div>
   </body>

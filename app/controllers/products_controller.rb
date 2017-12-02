@@ -8,14 +8,28 @@ class ProductsController < ApplicationController
   end
 
   def specific_week
-    @data = {
-      season: get_season(params[:week]),
-      week: get_week(params[:week])
-    }
     add_breadcrumb "< Dropweeks", :products_path
-    add_breadcrumb "Release: #{@data[:week]}", specific_week_path(params[:week])
+    add_breadcrumb "Release: #{params[:week]}", specific_week_path(params[:week])
+    @dropweek = params[:week]
     @data = Product.all.where(dropweek: params[:week])
     @order_item = current_order.order_items.new
+    @filters = Product.all.pluck(:filter).uniq.prepend("all")
+  end
+  
+  def filter_product
+    @dropweek = params[:week].gsub(" ", "/")
+    @filter = params[:filter]
+    @data = if params[:filter] == "all"
+      Product.where(dropweek: @dropweek)
+    else
+      Product.where(dropweek: @dropweek, filter: params[:filter])
+    end
+    @filters = Product.all.pluck(:filter).uniq.prepend("all")
+    @order_item = current_order.order_items.new
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def get_season(week)
