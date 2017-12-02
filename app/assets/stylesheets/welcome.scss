@@ -319,6 +319,7 @@ footer {
     overflow-y: scroll;
     width: 85%;
     margin: 0 auto;
+    -webkit-overflow-scrolling: touch;
   }
   .indicator-container {
     display: none !important;
