@@ -68,6 +68,6 @@ namespace :product_updater do
     end
 
     puts (count + updated) > 0 ? "New Products Added!! Product Updater Complete!!" : "Product Updater Complete!!!"
-    (count + updated) > 0 ? UserMailer.products_updated(count, updated).deliver_now : Thread.new { puts 'No Major Updates'; }
+    (count + updated) > 160 ? UserMailer.products_updated(count, updated).deliver_now : Thread.new { puts 'No Major Updates'; }
   end
 end
