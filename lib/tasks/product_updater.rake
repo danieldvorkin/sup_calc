@@ -14,50 +14,60 @@ namespace :product_updater do
       puts "Starting #{date}"
       link = "https://www.supremecommunity.com" + date
       page = Nokogiri::HTML(open(link))
-      cards = page.css('.card-details')
+      cards = page.css('.masonry__item')
 
       skipped = 0
       updated2 = 0
       built = 0
 
-      puts "======================================"
-      cards.each_with_index do |card|
-        id = card.attr("data-itemid")
-        product = Product.find_by_dataId(id)
-
-        if product.nil?
-          Product.create!(
-            active: true,
-            dropweek: date,
-            dataId: card.attr('data-itemid'),
-            name: card.css('.card__body h5').text,
-            title: card.css('.card__body h5').text,
-            link: card.css('.card__top img').attr('src'),
-            price: card.css('.droplist-price .label-price').text
-          )
-          built += 1
-          count += 1
-        else
-          product.active = true
-          product.dropweek = date
-          product.dataId = card.attr('data-itemid')
-          product.name = card.css('.card__body h5').text
-          product.title = card.css('.card__body h5').text
-          product.link = card.css('.card__top img').attr('src')
-          product.price = card.css('.droplist-price .label-price').text
-
-          if index < 3
-            product.changes.empty? ? next : Thread.new { updated += 1; updated2 += 1}
-          end
-          product.save!
+      puts "===================================================="
+      puts "\n"
+      print "Progress: "
+      cards.each do |item|
+        card = item.css('.card-details')
+        if card.length < 1
           next
+        else
+          dataId = card[0]["data-itemid"]
+          product = Product.find_by_dataId(dataId)
+          print "|"
+
+          if product.nil?
+            Product.create!(
+              active: true,
+              dropweek: date,
+              filter: item.attr('data-masonry-filter'),
+              dataId: dataId,
+              name: card.css('.card__body h5').text,
+              title: card.css('.card__body h5').text,
+              link: card.css('.card__top img').attr('src').value,
+              price: card.css('.droplist-price .label-price').text
+            )
+            built += 1
+            count += 1
+          else
+            product.active = true
+            product.dropweek = date
+            product.filter = item.attr('data-masonry-filter')
+            product.dataId = dataId
+            product.name = card.css('.card__body h5').text
+            product.title = card.css('.card__body h5').text
+            product.link = card.css('.card__top img').attr('src').value
+            product.price = card.css('.droplist-price .label-price').text
+
+            product.changes.empty? ? next : Thread.new { updated += 1; updated2 += 1}
+            product.save
+            next
+          end
         end
       end
+      puts "\n"
       puts "Built: #{built} :: Updated: #{updated2} :: Skipped: #{skipped}"
-      puts "======================================"
+      puts "\n"
+      puts "===================================================="
     end
 
     puts (count + updated) > 0 ? "New Products Added!! Product Updater Complete!!" : "Product Updater Complete!!!"
-    (count + updated) > 0 ? UserMailer.products_updated(count, updated).deliver_now : nil
+    (count + updated) > 0 ? UserMailer.products_updated(count, updated).deliver_now : Thread.new { puts 'No Major Updates'; }
   end
 end

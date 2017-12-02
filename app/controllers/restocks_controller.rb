@@ -1,4 +1,5 @@
 class RestocksController < ApplicationController
+  before_action :authenticate_user!
   def index
     add_breadcrumb "Countries", :restocks_path
     @places = %w(eu us jpn)

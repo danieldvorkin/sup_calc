@@ -3,11 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .breadcrumb {
   nav {
+    box-shadow: none;
     a {
       color: black !important;
     }
   }
 }
+
 .carousel .carousel-item {
   top: -100px !important;
 }
@@ -302,6 +304,12 @@ footer {
       height: auto !important;
       margin: 0 auto !important;
     }
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 80% !important;
   }
 }
 

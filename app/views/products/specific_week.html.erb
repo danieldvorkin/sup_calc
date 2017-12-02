@@ -2,9 +2,9 @@
   <% @data.each do |prod| %>
     <div class="card col s12 m4 l4" id="prod_<%= prod[:dataId] %>">
       <div class="card-image" style="max-height: 350px;">
-        <img class="product-imgs" src="http://supremecommunity.com<%= prod[:link] %>"/>
+        <img class="materialboxed " src="http://supremecommunity.com<%= prod[:link] %>"/>
       </div>
-      <div class="card-content valign-wrapper" style="min-height: 90px;">
+      <div class="card-content valign-wrapper" style="min-height: 90px !important;">
         <p><%= prod[:name] %></p>
       </div>
       <div class="card-content" style="min-height: 43px;">
