@@ -320,6 +320,9 @@ footer {
   width: auto !important;
   margin: 0 auto !important;
 }
+.parallax-container .parallax img {
+  display: initial !important;
+}
 
 @media only screen and (min-width: 993px) {
   .container {
