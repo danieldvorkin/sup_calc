@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
     @data = Product.all.where(dropweek: params[:week])
     @order_item = current_order.order_items.new
     @filters = Product.all.pluck(:filter).uniq.prepend("all")
+    @filter = ''
   end
   
   def filter_product
