@@ -9,7 +9,6 @@ class ProductsController < ApplicationController
 
   def specific_week
     add_breadcrumb "< Dropweeks", :products_path
-    add_breadcrumb "Release: #{params[:week]}", specific_week_path(params[:week])
     
     @dropweek = params[:week].gsub("/", " ")
     @data = Product.all.where(dropweek: params[:week])
