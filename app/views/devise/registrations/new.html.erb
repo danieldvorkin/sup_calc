@@ -3,13 +3,13 @@
     <%= link_to user_facebook_omniauth_authorize_url(), class: "btn social facebook", style: 'background: #395CA9 !important; margin-bottom: 25px;' do %>
       <i style="position:relative; left:-10px;" class="fa fa-facebook"></i>Sign Up with Facebook
     <% end %>
-    <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center;margin-bottom:50px;">
-      <span style="font-size: 40px; background-color: gainsboro; padding: 0 10px;">
+    <div style="width: 100%; height: 30px; border-bottom: 1px solid black; text-align: center;margin-bottom:50px;">
+      <span style="font-size: 40px; background-color: white; padding: 0 10px;">
         OR
       </span>
     </div>
     <h2>Sign Up Today!</h2>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { style: 'width: 70% !important;margin:0 auto;'})  do |f| %>
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true %>
 
