@@ -305,6 +305,21 @@ footer {
     }
   }
 }
+.card {
+  .card-image {
+    img {
+      height: 200px !important;
+      width: auto !important;
+      margin: 0 auto;
+    }
+  }
+}
+
+.materialboxed.initialized.active {
+  height: 140% !important;
+  width: auto !important;
+  margin: 0 auto !important;
+}
 
 @media only screen and (min-width: 993px) {
   .container {
@@ -314,6 +329,11 @@ footer {
 
 // iPhone 6 (portrait)
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
+  .materialboxed.initialized.active {
+    height: auto !important;
+    width: 135% !important;
+    margin: 0 auto !important;
+  }
   .card-collection {
     height: 520px;
     overflow-y: scroll;
