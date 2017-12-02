@@ -4,7 +4,7 @@
     <% @filters.each do |filter| %>
       <div class="col lg2" id="filter-<%= filter %>">
         <%= link_to "/products/#{@dropweek}/#{filter}", remote: true do %>
-          <%= image_tag("filters/#{filter}.png", style: 'max-height:30px;') %>
+          <%= image_tag("filters/#{filter.empty? ? 'all' : filter}.png", style: 'max-height:30px;') %>
         <% end %>
       </div>
     <% end %>
