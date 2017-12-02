@@ -305,16 +305,10 @@ footer {
     }
   }
 }
-.breadcrumb {
-  display: none;
-}
 
 @media only screen and (min-width: 993px) {
   .container {
     width: 80% !important;
-  }
-  .breadcrumb {
-    display: block;
   }
 }
 
@@ -528,11 +522,6 @@ footer {
 
 // iPhone 6 Plus (portrait)
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: portrait) {
-  .breadcrumb {
-    display: none;
-  }
-  .save-order {
-  }
   .product-price {
     width: 20%;
     font-size: 12px;
