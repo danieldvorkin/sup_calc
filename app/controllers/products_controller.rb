@@ -14,22 +14,21 @@ class ProductsController < ApplicationController
     @dropweek = params[:week].gsub("/", " ")
     @data = Product.all.where(dropweek: params[:week])
     @order_item = current_order.order_items.new
-    @filters = Product.all.pluck(:filter).uniq.prepend("all")
+    @filters = Product.all.pluck(:filter).uniq.prepend("all").compact
     @filter = "all"
   end
   
   def filter_product
     @dropweek = params[:week]
     @filter = params[:filter] || "all"
+    @filters = Product.all.pluck(:filter).uniq.prepend("all").compact
+    @order_item = current_order.order_items.new
     
     @data = if params[:filter] == "all"
       Product.where(dropweek: params[:week].gsub(" ", "/"))
     else
       Product.where(dropweek: params[:week].gsub(" ", "/"), filter: params[:filter])
     end
-    
-    @filters = Product.all.pluck(:filter).uniq.prepend("all")
-    @order_item = current_order.order_items.new
 
     respond_to do |format|
       format.js
