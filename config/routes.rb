@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :products, only: [:index]
   get '/products/:week', to: 'products#specific_week', as: 'specific_week'
-  get '/products/:week/:filter', to: 'products#filter_product', as: 'filter_product'
+  get '/products/:week/:filter', to: 'products#filter_product', as: 'filter_product', defaults: { format: 'js' }
   resources :orders, only: [:index, :destroy]
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy, :save_order], defaults: { format: 'js' }
