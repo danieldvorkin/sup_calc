@@ -32,8 +32,8 @@
       </div>
     <% end %>
     <div class="main-container" style="padding:10px 10px 0px 10px;">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <p class="<%= notice.present? ? 'blue badge' : '' %> notice" style="padding:10px !important; color:white !important;"><%= notice %></p>
+      <p class="<%= alert.present? ? 'red badge' : '' %> alert" style="padding:10px !important; color:white !important;"><%= alert %></p>
       <%= yield %>
     </div>
   </body>
