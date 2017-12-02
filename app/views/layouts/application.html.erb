@@ -32,8 +32,12 @@
       </div>
     <% end %>
     <div class="main-container" style="padding:10px 10px 0px 10px;">
-      <p class="<%= notice.present? ? 'blue badge' : '' %> notice" style="padding:10px !important; color:white !important;"><%= notice %></p>
-      <p class="<%= alert.present? ? 'red badge' : '' %> alert" style="padding:10px !important; color:white !important;"><%= alert %></p>
+      <% if notice.present? %>
+        <p class="<%= notice.present? ? 'blue badge' : '' %> notice" style="padding:10px !important; color:white !important;"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="<%= alert.present? ? 'red badge' : '' %> alert" style="padding:10px !important; color:white !important;"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </div>
   </body>
