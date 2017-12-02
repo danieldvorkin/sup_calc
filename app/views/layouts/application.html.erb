@@ -22,8 +22,8 @@
     <%= render partial: 'layouts/mobile_nav' %>
     <% if %w(products restocks).any? { |name| controller.controller_name.include? name } %>
       <div class=" breadcrumb container">
-        <nav>
-          <div class="nav-wrapper" style="background: white !important;padding: 0px 5%; color: black;">
+        <nav style="background:white !important;height:25px !important;">
+          <div class="valign-wrapper nav-wrapper" style="background: white !important;padding: 0px 5%; color: black;">
             <div class="col s12">
               <%= render_breadcrumbs :separator => ' / ' %>
             </div>
@@ -31,7 +31,7 @@
         </nav>
       </div>
     <% end %>
-    <div class="main-container" style="padding:10px 10px 0px 10px;">
+    <div class="main-container" style="padding:<%= controller.controller_name == "products" ? '0px ' : '10px ' %>10px 0px 10px;">
       <% if notice.present? %>
         <p class="<%= notice.present? ? 'blue badge' : '' %> notice" style="padding:10px !important; color:white !important;"><%= notice %></p>
       <% end %>
