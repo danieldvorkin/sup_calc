@@ -526,6 +526,9 @@ footer {
 
 // iPhone 6 Plus (portrait)
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: portrait) {
+  .breadcrumb {
+    display: none;
+  }
   .save-order {
   }
   .product-price {
