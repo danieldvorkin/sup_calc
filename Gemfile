@@ -17,6 +17,7 @@ gem 'omniauth-facebook'
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
+gem 'rails_admin', '~> 1.2'
 gem 'dotenv-rails'
 gem 'figaro'
 gem "breadcrumbs_on_rails"

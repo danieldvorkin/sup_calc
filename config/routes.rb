@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :products, only: [:index]
   get '/products/:week', to: 'products#specific_week', as: 'specific_week'
   get '/products/:week/:filter', to: 'products#filter_product', as: 'filter_product', defaults: { format: 'js' }
