@@ -25,6 +25,6 @@ class User < ApplicationRecord
   
   private
   def set_default_role
-    self.add_role "user"
+    self.add_role :user
   end
 end
