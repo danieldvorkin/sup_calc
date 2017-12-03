@@ -15,6 +15,8 @@ gem 'time_difference'
 
 gem 'omniauth-facebook'
 gem 'devise'
+gem 'cancancan'
+gem 'rolify'
 gem 'dotenv-rails'
 gem 'figaro'
 gem "breadcrumbs_on_rails"

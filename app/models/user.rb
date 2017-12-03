@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  before_create :set_default_role
+
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :orders
@@ -18,5 +21,10 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
     end
+  end
+  
+  private
+  def set_default_role
+    self.role ||= Role.find_by_name('registered')
   end
 end
