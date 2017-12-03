@@ -4,6 +4,9 @@
   <li><%= link_to("Saved Orders", orders_path) %></li>
   <li><div class="divider"></div></li>
   <li><%= link_to "Account", edit_user_registration_path %></li>
+  <% if current_user.has_role? "admin" %>
+    <li><%= link_to('Admin', "/admin") %></li>
+  <% end %>
   <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
   <li><div class="divider"></div></li>
   <li class="cart-button"><%= render 'layouts/cart' %></li>

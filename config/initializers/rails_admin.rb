@@ -14,6 +14,14 @@ RailsAdmin.config do |config|
       redirect_to main_app.root_path, flash: {error: 'You are not Admin bro!'}
     end
   end
+  
+  RailsAdmin.config do |config|
+    config.model 'Products' do
+      list do
+        include_all_fields # all other default fields will be added after, conveniently
+      end
+    end
+  end
   ## == Cancan ==
   # config.authorize_with :cancan
 

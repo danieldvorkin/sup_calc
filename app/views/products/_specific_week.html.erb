@@ -18,14 +18,19 @@
     <div class="card-collection">
       <% @data.each do |prod| %>
         <div class="card col s12 m4 l4" id="prod_<%= prod[:dataId] %>">
-          <div class="card-image" style="max-height: 350px;">
-            <img class="materialboxed " src="http://supremecommunity.com<%= prod[:link] %>"/>
+          
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator materialboxed " src="http://supremecommunity.com<%= prod[:link] %>"/>
           </div>
-          <div class="card-content valign-wrapper" style="min-height: 90px !important;">
-            <p><%= prod[:name] %></p>
-          </div>
-          <div class="card-content" style="min-height: 43px;">
-            <span class="new badge red price-label" data-badge-caption="" style="font-size:15px;margin: -10px -5px;position: relative;left: -65%;"><%= prod.label %></span>
+          <div class="card-content">
+            <div class="row">
+              <div class="col lg8" style="width:100%;">
+                <span class="card-title grey-text text-darken-4"><%= prod[:name] %></span>
+              </div>
+              <div class="col lg4 activator">
+                <i class="material-icons right" style="cursor:pointer;">more_vert</i>
+              </div>
+            </div>
             <%= form_for @order_item, remote: true do |f| %>
               <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
               <%= f.hidden_field :product_id, value: prod[:id] %>
@@ -46,6 +51,20 @@
                 <% end %>
               <% end %>
             <% end %>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+            <div class="row" style="min-height:265px !important;">
+              <div class="col s12">
+                <div class="section">
+                  <h5><%= prod[:name] %></h5>
+                  <p><strong>Source: </strong> Ebay Canada</p>
+                  <p><strong><i>Cost: </i></strong><%= prod.label %></p>
+                  <p><strong><i>Resell Price: </i></strong>$ <%= prod.hype_price %></p>
+                  <h5>Hypeness: <%= prod.hype %></h5>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
