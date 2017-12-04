@@ -44,10 +44,6 @@
   <%= render partial: 'layouts/footer' %>
   <script>
     $(function(){
-      if($(window).width() < 1024){
-        $('.material-tooltip').hide();
-      }
-      
       $(".button-collapse").sideNav();
       $('.close').click(function(){
         $('.button-collapse').sideNav('hide');

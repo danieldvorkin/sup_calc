@@ -4,7 +4,7 @@
   <hr/>
   <div class="row filter-section" style="margin-bottom:0px !important;padding: 0 15px;">
     <% @filters.each do |filter| %>
-      <div class="col lg2 tooltipped" id="filter-<%= filter %>" data-position="top" data-delay="5" data-tooltip="<%= filter.titleize %>">
+      <div class="col lg2" id="filter-<%= filter %>">
         <%= link_to "/products/#{@dropweek}/#{filter}", class: 'filter-btn', remote: true do %>
           <%= image_tag("filters/#{filter}.png", style: 'max-height:30px;') %>
         <% end %>
