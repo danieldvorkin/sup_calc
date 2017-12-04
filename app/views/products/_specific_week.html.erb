@@ -53,14 +53,44 @@
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-            <div class="row" style="min-height:265px !important;">
+            <div class="row" style="margin-bottom:0px !important;">
               <div class="col s12">
                 <div class="section">
-                  <h5><%= prod[:name] %></h5>
-                  <p><strong>Source: </strong> Ebay Canada</p>
-                  <p><strong><i>Cost: </i></strong><%= prod.label %></p>
-                  <p><strong><i>Resell Price: </i></strong>$ <%= prod.hype_price %></p>
-                  <h5>Hypeness: <%= prod.hype %></h5>
+                  <h6><%= prod[:name] %></h6>
+                  <table class="responsive-table">
+                    <thead>
+                      <tr>
+                        <th>Source</th>
+                        <th>Hypeness</th>
+                        <th>Resell Price</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>Ebay Canada</td>
+                        <td><%= prod.hype %></td>
+                        <td>$ <%= prod.hype_price %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="responsive-table">
+                    <thead>
+                      <tr>
+                        <th>USD Sub Total</th>
+                        <th>USD Total</th>
+                        <th>CAN Total</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td><%= prod.label %></td>
+                        <td><%= WelcomeHelper.subtotal_price(prod.label.split(" ")[1]) %></td>
+                        <td><%= WelcomeHelper.can_price(prod.label.split(" ")[1]) %></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

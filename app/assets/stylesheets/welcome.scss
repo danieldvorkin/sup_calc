@@ -1,10 +1,14 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.card .card-reveal {
+  padding: 15px !important;
+}
 .shopping-cart {
   .materialboxed.initialized.active {
     height: 120% !important;
     max-height: inherit;
+    top: 0px !important;
   }
 }
 .card .card-title {
@@ -16,7 +20,14 @@
 }
 .card-reveal {
   .card-title {
-    height: 25px !important;
+    height: 35px !important;
+    margin-left: 90%;
+    z-index: 22;
+  }
+  .row {
+    position: relative;
+    top: -10%;
+    z-index: -1;
   }
 }
 .breadcrumb {
