@@ -348,10 +348,16 @@ footer {
   }
 }
 
+@media only screen and (max-width: 992px) {
+  table.responsive-table tbody {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 // iPhone 6 (portrait)
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
   .order-img {
-    max-height: 15px;
+    max-height: 20px;
   }
   .materialboxed.initialized.active {
     height: auto !important;
