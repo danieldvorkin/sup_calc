@@ -7,17 +7,29 @@
         <li class="order_<%= order.id %>">
           <div class="collapsible-header <%= index == 0 ? 'active' : '' %>"><i class="material-icons">star</i>Order#: <%= order.id %>2017</div>
           <div class="collapsible-body"><span>
-            <div class="column-labels">
-              <label class="product-image">Image</label>
-              <label class="product-details">Product</label>
-              <label class="product-price">Sub Total</label>
-              <label class="product-price">Total</label>
-              <label class="product-price">CAN Total</label>
-              <label class="product-removal">Remove</label>
-            </div>
-            <% order.order_items.each do |order_item| %>
-              <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
-            <% end %>
+            <table class="responsive-table">
+              <thead>
+                <tr>
+                  <th>&nbsp;</th>
+                  <th colspan="2">Name</th>
+                  <th>Sub Total</th>
+                  <th>Total</th>
+                  <th>CAD Total</th>
+                  <th>Resell</th>
+                  <th>Resell Price</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% order.order_items.each do |order_item| %>
+                  <tr>
+                    <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            
             <div class="totals">
               <div class="totals-item">
                 <label>USD Subtotal</label>

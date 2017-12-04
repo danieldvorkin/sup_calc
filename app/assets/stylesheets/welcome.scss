@@ -1,9 +1,18 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.shopping-cart {
+  .materialboxed.initialized.active {
+    height: 120% !important;
+    max-height: inherit;
+  }
+}
 .card .card-title {
   font-size: 15px !important;
   height: 90px !important;
+}
+.order-img {
+  max-height: 100px;
 }
 .card-reveal {
   .card-title {
@@ -341,6 +350,9 @@ footer {
 
 // iPhone 6 (portrait)
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
+  .order-img {
+    max-height: 15px;
+  }
   .materialboxed.initialized.active {
     height: auto !important;
     width: 135% !important;

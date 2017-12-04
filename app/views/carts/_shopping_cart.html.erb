@@ -14,21 +14,33 @@
 <% else %>
   <br/>
   <h3>Shopping Cart</h3><br/>
+  
   <h6>Order #: <%= current_order.id %>2017</h6><br/>
 
-  <div class="shopping-cart">
+  <div class="shopping-cart-area">
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th colspan="2">Name</th>
+          <th>Sub Total</th>
+          <th>Total</th>
+          <th>CAD Total</th>
+          <th>Resell</th>
+          <th>Resell Price</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
 
-    <div class="column-labels">
-      <label class="product-image">Image</label>
-      <label class="product-details">Product</label>
-      <label class="product-price">Sub Total</label>
-      <label class="product-price">Total</label>
-      <label class="product-price">CAN Total</label>
-      <label class="product-removal">Remove</label>
-    </div>
-    <% @order_items.each do |order_item| %>
-      <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
-    <% end %>
+      <tbody>
+        <% @order_items.each do |order_item| %>
+          <tr>
+            <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
     <div class="row">
       <div class="col s12 m12 l12">
         <div class="totals">

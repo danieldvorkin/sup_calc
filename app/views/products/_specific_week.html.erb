@@ -18,9 +18,8 @@
     <div class="card-collection">
       <% @data.each do |prod| %>
         <div class="card col s12 m4 l4" id="prod_<%= prod[:dataId] %>">
-          
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator materialboxed " src="http://supremecommunity.com<%= prod[:link] %>"/>
+          <div class="card-image">
+            <img class="materialboxed" src="http://supremecommunity.com<%= prod[:link] %>"/>
           </div>
           <div class="card-content">
             <div class="row">
@@ -75,6 +74,7 @@
 <script>
   $(function(){
     $('.materialboxed').materialbox();
+    
     if($(window).width() < 784) {
       $(".filter-btn").click(function() { 
         var targetDiv = $(this).attr('href'); 

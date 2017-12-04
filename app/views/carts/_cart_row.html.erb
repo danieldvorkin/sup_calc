@@ -1,18 +1,20 @@
-<div class="product">
-  <div class="product-image">
-    <img src="http://supremecommunity.com/<%= product.link %>">
-  </div>
-  <div class="product-details">
-    <div class="product-title"><%= product.name %></div>
-  </div>
-
-  <div class="product-price"><%= product.price.split(" / ").shift(1)[0] %></div>
-  <div class="product-price"><%= WelcomeHelper.subtotal_price(product.price.split(" / ").shift(1)[0]) %></div>
-  <div class="product-price"><%= WelcomeHelper.can_price(product.price.split(" / ").shift(1)[0]) %></div>
-
+<td><img src="http://supremecommunity.com/<%= product.link %>" class="materialboxed order-img"></td>
+<td colspan="2"><%= product.name %></td>
+<td><%= product.price.split(" / ").shift(1)[0] %></td>
+<td><%= WelcomeHelper.subtotal_price(product.price.split(" / ").shift(1)[0]) %></td>
+<td><%= WelcomeHelper.can_price(product.price.split(" / ").shift(1)[0]) %></td>
+<td><%= product.hype %></td>
+<td>$<%= product.hype_price %> CAD</td>
+<td>
   <% if controller.controller_name != "orders" %>
     <div class="product-removal">
       <%= link_to "X", order_item, { method: :delete, remote: true, class: "remove-product" } %>
     </div>
   <% end %>
-</div>
+</td>
+
+<script>
+  $(function(){
+    $('.materialboxed').materialbox();
+  });
+</script>

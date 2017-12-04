@@ -2,4 +2,4 @@ $(".cart-text").html("<%= escape_javascript(render 'layouts/cart') %>")
 $('.mobile-cart-label').html("0 <i class='fa fa-shopping-cart'></i>");
 $('.column-labels, .product, .totals').hide();
 alert("Order Saved!")
-$('.container .shopping-cart').html("<p class='text-center'>Your order has been saved and can be viewed in Saved Orders</p>")
+$('.shopping-cart-area').html("<p class='text-center'>Your order has been saved and can be viewed in <a href='/orders'>Saved Orders</a></p>")
