@@ -1,3 +1,4 @@
 $(".cart-text").html("<%= escape_javascript(render 'layouts/cart') %>")
 $(".shopping-cart").html("<%= escape_javascript(render 'carts/shopping_cart') %>")
 $('.mobile-cart-label').html("<%= current_order.order_items.size %><i class='fa fa-shopping-cart'></i>");
+Materialize.toast('Order has been reset!', 4000);

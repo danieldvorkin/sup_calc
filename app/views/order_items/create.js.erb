@@ -1,6 +1,7 @@
 <% if @order.errors.any? || @order_item.errors.any? %>
   alert("not valid.")
 <% else %>
+  Materialize.toast('Product Added!', 4000);
   $(".cart-text").html("<%= j render 'layouts/cart' %>")
   $('.mobile-cart-label').html("<%= current_order.order_items.size %><i class='fa fa-shopping-cart'></i>");
 
