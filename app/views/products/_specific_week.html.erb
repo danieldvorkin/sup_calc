@@ -6,7 +6,7 @@
     <% @filters.each do |filter| %>
       <div class="col lg2" id="filter-<%= filter %>">
         <%= link_to "/products/#{@dropweek}/#{filter}", class: 'filter-btn', remote: true do %>
-          <%= image_tag("filters/#{filter}.png", style: 'max-height:30px;') %>
+          <%= image_tag("filters/#{filter}.png", style: 'max-height:30px;opacity: 0.3;') %>
         <% end %>
       </div>
     <% end %>
@@ -26,8 +26,8 @@
               <div class="col lg8" style="width:100%;">
                 <span class="card-title grey-text text-darken-4"><%= prod[:name] %></span>
               </div>
-              <div class="col lg4 activator">
-                <i class="material-icons right tooltipped" data-position="right" data-delay="5" data-tooltip="View Details" style="cursor:pointer;">more_vert</i>
+              <div class="col lg4 activator" style="cursor:pointer;">
+                View Details
               </div>
             </div>
             <%= form_for @order_item, remote: true do |f| %>
@@ -104,7 +104,7 @@
 <script>
   $(function(){
     $('.materialboxed').materialbox();
-    $('.tooltipped').tooltip({delay: 5});
+    $("#filter-<%= @filter %> .filter-btn img").css('opacity', '1.0')
     
     if($(window).width() < 784) {
       $(".filter-btn").click(function() { 
