@@ -47,6 +47,8 @@ namespace :product_updater do
               built += 1
               count += 1
             else
+              # The reason for this, is to use .changes to identify changes
+              # update_attr will not return this info which i need to modify the counters.
               product.active = true
               product.dropweek = date
               product.filter = item.attr('data-masonry-filter')
@@ -56,6 +58,7 @@ namespace :product_updater do
               product.link = card.css('.card__top img').attr('src').value
               product.price = card.css('.droplist-price .label-price').text
 
+              # Where i use .changes to either go onto next iteration or add to the counters.
               product.changes.empty? ? next : Thread.new { updated += 1; updated2 += 1}
               product.save
               next
@@ -68,9 +71,12 @@ namespace :product_updater do
         puts "===================================================="
       end
     }
-    stat.status = "complete"
-    stat.completion_time = times.real.round(2)
-    stat.save
+    stat.update_attributes({ 
+      status: "complete", 
+      products_added: count, 
+      products_updated: updated, 
+      completion_time: times.real.round(2) 
+    })
     
     puts (count + updated) > 0 ? "New Products Added!! Product Updater Complete!!" : "Product Updater Complete!!!"
     (count + updated) > 160 ? UserMailer.products_updated(count, updated).deliver_now : Thread.new { puts 'No Major Updates'; }
