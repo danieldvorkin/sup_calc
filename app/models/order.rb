@@ -7,7 +7,8 @@ class Order < ApplicationRecord
 
   def subtotal
     order_items.map do |item|
-      Product.find(item.product_id).price.delete(' ').gsub("\n", "").split("/").shift(1)[0].gsub(/[^0-9]/, '').to_i
+      price = Product.find(item.product_id).try(:price)
+      price.present? ? price.delete(' ').gsub("\n", "").split("/").shift(1)[0].gsub(/[^0-9]/, '').to_i : "N/A"
     end.sum
   end
   

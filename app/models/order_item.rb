@@ -34,6 +34,6 @@ private
 
   def finalize
     self[:unit_price] = unit_price
-    self[:total_price] = quantity * self[:unit_price]
+    self[:total_price] = self[:unit_price].present? ? quantity * self[:unit_price] : 0.0
   end
 end
