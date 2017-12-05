@@ -2,9 +2,9 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   if Rails.env == "production"
-    config.omniauth :facebook, ENV['facebook_app_id'], ENV['facebook_app_secret'], callback_url: 'http://www.premecalc.com/users/auth/facebook/callback', display: 'popup'
+    config.omniauth :facebook, ENV['facebook_app_id'], ENV['facebook_app_secret'], callback_url: 'http://www.premecalc.com/users/auth/facebook/callback', scope: 'email', info_fields: 'email'
   else
-    config.omniauth :facebook, ENV['facebook_app_id'], ENV['facebook_app_secret'], callback_url: 'http://localhost:3000/users/auth/facebook/callback', display: 'popup'
+    config.omniauth :facebook, ENV['facebook_app_id'], ENV['facebook_app_secret'], callback_url: 'http://localhost:3000/users/auth/facebook/callback', scope: 'email', info_fields: 'email'
   end
 
   # The secret key used by Devise. Devise uses this key to generate
