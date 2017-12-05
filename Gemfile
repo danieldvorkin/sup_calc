@@ -14,7 +14,6 @@ gem 'pgreset'
 gem 'time_difference'
 
 gem 'omniauth-facebook'
-gem 'omniauth-instagram'
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
