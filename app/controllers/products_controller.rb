@@ -3,30 +3,37 @@ class ProductsController < ApplicationController
 
   def index
     add_breadcrumb "Dropweeks", :products_path
-    @weeks = Product.order('dropweek DESC').all.pluck(:dropweek).uniq
+    
+    # All Dropweeks from Products
+    @weeks = Product.dropweeks
+    # Current Order
     @order_item = current_order.order_items.new
   end
 
   def specific_week
     add_breadcrumb "< Dropweeks", :products_path
     
-    @dropweek = params[:week].gsub("/", " ")
-    @data = Product.all.where(dropweek: params[:week])
+    # Dropweek/Products/Current Order Instance vars
+    @dropweek = toggle_slashes(params[:week])
+    @products = Product.specific_week(params[:week])
     @order_item = current_order.order_items.new
-    @filters = Product.all.pluck(:filter).uniq.prepend("all").compact
-    @filter = "all"
+    
+    # Product filter list
+    @filters = Product.filters
+    # Set default to 'all'
+    @filter = "all" 
   end
   
   def filter_product
     @dropweek = params[:week]
     @filter = params[:filter] || "all"
-    @filters = Product.all.pluck(:filter).uniq.prepend("all").compact
+    @filters = Product.filters
     @order_item = current_order.order_items.new
     
-    @data = if params[:filter] == "all"
-      Product.where(dropweek: params[:week].gsub(" ", "/"))
+    @products = if params[:filter] == "all"
+      Product.where(dropweek: toggle_slashes(params[:week], false))
     else
-      Product.where(dropweek: params[:week].gsub(" ", "/"), filter: params[:filter])
+      Product.where(dropweek: toggle_slashes(params[:week], false), filter: params[:filter])
     end
 
     respond_to do |format|
@@ -40,5 +47,9 @@ class ProductsController < ApplicationController
 
   def get_week(week)
     week.split("/").shift(5).last
+  end
+  
+  def toggle_slashes(str, toggle = true)
+    toggle ? str.gsub("/", " ") : str.gsub(" ", "/")
   end
 end
