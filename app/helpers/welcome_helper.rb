@@ -19,16 +19,24 @@ module WelcomeHelper
   end
 
   def self.subtotal_price(price)
-    price = price.gsub(/[^0-9a-z ]/i, '').to_i
-    final_price = ((price * 0.13) + (price * 1.17) + 20)
-    self.print_price(final_price)
+    if price.nil? || !price.present?
+      return "N/A"
+    else
+      price = price.gsub(/[^0-9a-z ]/i, '').to_i
+      final_price = ((price * 0.13) + (price * 1.17) + 20)
+      self.print_price(final_price)
+    end
   end
 
   def self.can_price(price)
-    conv = self.find_conversion
-    price = price.gsub(/[^0-9a-z ]/i, '').to_i
-    final_price = ((price * 0.13) + (price * 1.17) + 20) * conv
-    self.print_price(final_price)
+    if price.nil? || !price.present?
+      return "N/A"
+    else
+      conv = self.find_conversion
+      price = price.gsub(/[^0-9a-z ]/i, '').to_i
+      final_price = ((price * 0.13) + (price * 1.17) + 20) * conv
+      self.print_price(final_price)
+    end
   end
 
   def self.usd_subtotal(prices)
