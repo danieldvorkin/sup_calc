@@ -74,7 +74,7 @@ namespace :product_updater do
     stat.update_attributes({ 
       status: "complete", 
       products_added: count, 
-      products_updated: updated, 
+      products_updated: updated - 160, 
       completion_time: times.real.round(2) 
     })
     

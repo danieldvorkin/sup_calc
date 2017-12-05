@@ -15,6 +15,16 @@ RailsAdmin.config do |config|
     end
   end
   
+  config.model 'SystemStat' do
+    list do
+      field :completion_time
+      field :status
+      field :created_at
+      field :products_added
+      field :products_updated
+    end
+  end
+  
   ## == Cancan ==
   # config.authorize_with :cancan
 
