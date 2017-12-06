@@ -6,7 +6,9 @@ class UserMailer < ApplicationMailer
     @updated = updated
     
     User.all.each do |user|
-      mail(to: user.email, subject: 'PremeCalc :: New Product Alerts', from: 'news@premecalc.com')
+      mail(to: user.email, subject: 'PremeCalc :: New Product Alerts', from: 'news@premecalc.com') do |format|
+        format.html
+      end
     end
   end
 

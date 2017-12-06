@@ -45,13 +45,11 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   ActionMailer::Base.smtp_settings = {
-    :address              => "smtp.gmail.com",
+    :address              => "smtp.mailgun.org",
     :port                 => "587",
-    :domain               => "gmail.com",
-    :user_name            => ENV['gmail_username'],
-    :password             => ENV['gmail_password'],
-    :authentication       => "plain",
-    :enable_starttls_auto => true
+    :domain               => ENV["email_domain"],
+    :user_name            => ENV["email_username"],
+    :password             => ENV["email_password"]
   }
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
