@@ -49,7 +49,6 @@ namespace :product_updater do
             else
               # The reason for this, is to use .changes to identify changes
               # update_attr will not return this info which i need to modify the counters.
-              product.active = true
               product.dropweek = date
               product.filter = item.attr('data-masonry-filter')
               product.dataId = dataId
