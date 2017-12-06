@@ -19,7 +19,7 @@
     <p>Not available, try another filter.</p>
   <% else %>
     <div class="card-collection">
-      <% @products.each do |prod| %>
+      <% @products.order(:title).each do |prod| %>
         <div class="card col s12 m4 l4" id="prod_<%= prod[:dataId] %>">
           <div class="card-image">
             <img class="materialboxed" src="http://supremecommunity.com<%= prod[:link] %>"/>
