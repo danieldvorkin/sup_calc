@@ -4,9 +4,8 @@ class UserMailer < ApplicationMailer
   def products_updated(count, updated)
     @count = count
     @updated = updated
-    
     User.all.each do |user|
-      mail(to: user.email, subject: 'PremeCalc :: New Product Alerts', from: 'news@premecalc.com') do |format|
+      mail(to: "", bcc: user.email, subject: 'PremeCalc :: New Product Alerts', from: 'news@premecalc.com') do |format|
         format.html
       end
     end

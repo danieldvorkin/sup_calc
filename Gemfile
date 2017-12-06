@@ -12,7 +12,7 @@ gem 'materialize-sass'
 gem 'material_icons'
 gem 'pgreset'
 gem 'time_difference'
-
+gem "actionmailer_inline_css"
 gem 'omniauth-facebook'
 gem 'devise'
 gem 'cancancan'
