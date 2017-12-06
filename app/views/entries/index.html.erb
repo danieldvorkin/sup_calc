@@ -1,0 +1,35 @@
+<div class="container newsfeed">
+  <h4>Supreme News </h4>
+  <small>provided by: supremecommunity</small>
+  <div class="row">
+    <% @entries.each do |entry| %>
+      <div class="col s12 m6 l4">
+        <div class="card hoverable">
+          <a target="_blank" href="<%= entry.link %>">
+            <div class="card-image">
+              <%= image_tag("https://supremecommunity.com/#{entry.img}", style: "width:100% !important;" ) %>    
+              <span class="card-title">
+                <p><%= entry.title %><br/>
+                  <small><%= entry.via %> on: <%= entry.published %></small>
+                <p>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    <% end %>
+    <div class="paginate">
+      <%= will_paginate @entries %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function(){
+    $('.card-image img').hover(function(){
+      $(this).css('opacity', '0.5');
+    }, function(){
+      $(this).css('opacity', '1.0');
+    });
+  });
+</script>

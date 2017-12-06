@@ -13,6 +13,7 @@ gem 'material_icons'
 gem 'pgreset'
 gem 'time_difference'
 gem "actionmailer_inline_css"
+gem 'will_paginate', '~> 3.1.0'
 gem 'omniauth-facebook'
 gem 'devise'
 gem 'cancancan'

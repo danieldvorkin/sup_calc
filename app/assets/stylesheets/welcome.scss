@@ -253,6 +253,7 @@ nav {
   ul {
     a {
       color: black !important;
+      padding: 23px 15px !important;
     }
   }
 }
@@ -351,6 +352,31 @@ footer {
 }
 .parallax-container .parallax img {
   display: initial !important;
+}
+
+a:hover {
+  background-color: transparent !important;
+}
+.newsfeed {
+  .row {
+    margin-bottom: 8%;
+    .paginate {
+      font-size: 20px;
+      text-align: center;
+    }
+    .card {
+      border-radius: 5px;
+      .card-image {
+        img {
+          width: 100% !important;
+        }
+        .card-title {
+          opacity: 0.85;
+          padding: 20px !important;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 993px) {

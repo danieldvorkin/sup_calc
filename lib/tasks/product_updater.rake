@@ -3,7 +3,7 @@ namespace :product_updater do
   desc "TODO"
   task update_products: :environment do
     require 'open-uri'
-    puts "Welcome to Product Upodater"
+    puts "Welcome to Product Updater"
     stat = SystemStat.create!(status: "in_progress", completion_time: nil)
     count = 0
     updated = 0
