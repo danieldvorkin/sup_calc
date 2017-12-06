@@ -45,7 +45,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   ActionMailer::Base.smtp_settings = {
-    :address              => "smtp.mailgun.org",
+    :address              => "smtp.1and1.com",
     :port                 => "587",
     :domain               => ENV["email_domain"],
     :user_name            => ENV["email_username"],
