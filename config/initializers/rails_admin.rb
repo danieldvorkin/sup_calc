@@ -25,6 +25,15 @@ RailsAdmin.config do |config|
     end
   end
   
+  config.model 'Order' do
+    list do
+      field :id
+      field :subtotal
+      field :order_status
+      field :user
+    end
+  end
+  
   ## == Cancan ==
   # config.authorize_with :cancan
 
