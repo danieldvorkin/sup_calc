@@ -367,6 +367,15 @@ footer {
 
 // iPhone 6 (portrait)
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
+  .season-title {
+    font-size: 15px !important;
+    text-align: center;
+  }
+  .filter-btn {
+    img {
+      max-height: 20px !important;
+    }
+  }
   .order-img {
     max-height: 20px;
   }

@@ -38,17 +38,17 @@
               <%= f.hidden_field :product_id, value: prod[:id] %>
 
               <% if current_order.order_items.find_by_product_id(prod[:id]).present? %>
-                <%= link_to("/order_items/#{current_order.order_items.find_by_product_id(prod[:id]).try(:id)}", { method: :delete, remote: true, class: "btn-floating halfway-fab waves-effect waves-light red" }, style: 'visibility: visible;') do %>
+                <%= link_to("/order_items/#{current_order.order_items.find_by_product_id(prod[:id]).try(:id)}", { method: :delete, remote: true, disabled: prod[:price].empty?, class: "btn-floating halfway-fab waves-effect waves-light red" }, style: 'visibility: visible;') do %>
                   <i class="material-icons">remove</i>
                 <% end %>
                 <%= button_tag(type: "submit", class: "btn-floating halfway-fab waves-effect waves-light green", style: "visibility: hidden;") do %>
                   <i class="material-icons">add</i>
                 <% end %>
               <% else %>
-                <%= link_to("/order_items/#{current_order.order_items.find_by_product_id(prod[:id]).try(:id)}", { method: :delete, remote: true, class: "btn-floating halfway-fab waves-effect waves-light red" }, style: 'visibility: hidden;') do %>
+                <%= link_to("/order_items/#{current_order.order_items.find_by_product_id(prod[:id]).try(:id)}", { method: :delete, remote: true, disabled: prod[:price].empty?, class: "btn-floating halfway-fab waves-effect waves-light red" }, style: 'visibility: hidden;') do %>
                   <i class="material-icons">remove</i>
                 <% end %>
-                <%= button_tag(type: "submit", class: "btn-floating halfway-fab waves-effect waves-light green", style: "visibility: visible;") do %>
+                <%= button_tag(type: "submit", class: "btn-floating halfway-fab waves-effect waves-light green", style: "visibility: visible;", disabled: prod[:price].empty?) do %>
                   <i class="material-icons">add</i>
                 <% end %>
               <% end %>
