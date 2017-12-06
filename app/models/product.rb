@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   end
   
   def self.specific_week(dropweek)
-    self.all.where(dropweek: dropweek)
+    self.all.where(dropweek: dropweek, active: true)
   end
   
   def self.filters
