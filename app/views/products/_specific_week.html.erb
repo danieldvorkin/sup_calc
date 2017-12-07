@@ -33,6 +33,15 @@
                 View Details
               </div>
             </div>
+            <p style="width:75%;margin: 0px 3%;">
+              <%= prod[:upvote].to_i %>&nbsp;<i class="fa fa-thumbs-up"></i>
+              <span style="float:right;">
+                <i class="fa fa-thumbs-down"></i>&nbsp;<%= prod[:downvote].to_i %>
+              </span>
+            </p>
+            <div class="outer-meter" style="height:20px;">
+              <div class="inner-meter" style="width: <%= (prod[:upvote] / (prod[:upvote] + prod[:downvote])) * 100 %>%;"></div>
+            </div>
             <%= form_for @order_item, remote: true do |f| %>
               <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
               <%= f.hidden_field :product_id, value: prod[:id] %>

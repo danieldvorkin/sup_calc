@@ -1,6 +1,23 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.outer-meter {
+  margin: auto;
+  border-radius: 5px;
+  text-align: center;
+  width: 75%;
+  text-align: left;
+  margin: 0px 15px;
+  font-size: 0px;
+  line-height: 0px;
+  background: red;
+}
+.inner-meter {
+  border-radius: 5px;
+  line-height: 0px;
+  height: 20px;
+  background: green;
+}
 .card .card-reveal {
   padding: 15px !important;
   width: 99% !important;
@@ -322,7 +339,8 @@ footer {
 }
 
 .btn-floating.halfway-fab {
-  bottom: 25px !important;
+  bottom: 10px !important;
+  right: 10px !important;
 }
 
 .card.horizontal {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171206155401) do
+ActiveRecord::Schema.define(version: 20171207070147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 20171206155401) do
     t.string "filter"
     t.string "hype"
     t.string "hype_price"
+    t.decimal "upvote"
+    t.decimal "downvote"
   end
 
   create_table "roles", force: :cascade do |t|
