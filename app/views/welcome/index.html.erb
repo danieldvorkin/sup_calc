@@ -5,7 +5,7 @@
       <ul class="slides">
         <% @data.each do |item| %>
           <li>
-            <%= image_tag(item[:link]) %>
+            <%= image_tag(item[:link], style: "box-shadow: inset 0 0 25em black;opacity: 0.6;") %>
             <div class="caption <%= item[:position] %>-align">
               <h3 class="<%= item[:color] %>-text"><%= item[:bigT] %></h3>
               <h5 class="light <%= item[:color] %>-text text-lighten-3"><%= item[:smallT] %></h5>
