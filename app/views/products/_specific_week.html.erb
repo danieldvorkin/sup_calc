@@ -63,24 +63,7 @@
                   <table class="responsive-table">
                     <thead>
                       <tr>
-                        <th>Source</th>
-                        <th>Hypeness</th>
-                        <th>Resell Price</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <tr>
-                        <td>Ebay Canada</td>
-                        <td><%= prod.hype %></td>
-                        <td>$ <%= prod.hype_price %></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <table class="responsive-table">
-                    <thead>
-                      <tr>
-                        <th>USD Sub Total</th>
+                        <th>Sub Total</th>
                         <th>USD Total</th>
                         <th>CAN Total</th>
                       </tr>
@@ -91,6 +74,23 @@
                         <td><%= prod.label %></td>
                         <td><%= WelcomeHelper.subtotal_price(prod.label.split(" ")[1]) %></td>
                         <td><%= WelcomeHelper.can_price(prod.label.split(" ")[1]) %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="responsive-table">
+                    <thead>
+                      <tr>
+                        <th>Source</th>
+                        <th>Hypeness</th>
+                        <th>Resell $$</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>Ebay Canada</td>
+                        <td><%= prod.hype %></td>
+                        <td>$ <%= prod.hype_price %></td>
                       </tr>
                     </tbody>
                   </table>

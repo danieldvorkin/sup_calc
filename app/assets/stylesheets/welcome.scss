@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .card .card-reveal {
   padding: 15px !important;
+  width: 99% !important;
 }
 .shopping-cart {
   .materialboxed.initialized.active {
@@ -393,6 +394,9 @@ a:hover {
 
 // iPhone 6 (portrait)
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
+  .card .card-reveal {
+    width: 100% !important;
+  }
   .season-title {
     font-size: 15px !important;
     text-align: center;
