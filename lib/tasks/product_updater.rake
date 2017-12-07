@@ -62,7 +62,7 @@ namespace :product_updater do
               product.downvote = item.css('.progress-bar-danger').text
 
               # Where i use .changes to either go onto next iteration or add to the counters.
-              product.changes.empty? ? next : Thread.new { updated += 1; updated2 += 1}
+              product.changes.include?("upvote") || product.changes.include?("downvote") || product.changes.empty? ? next : Thread.new { updated += 1; updated2 += 1}
               product.save
               next
             end
