@@ -42,7 +42,7 @@ namespace :product_updater do
                 name: card.css('.card__body h5').text,
                 title: card.css('.card__body h5').text,
                 link: card.css('.card__top img').attr('src').value,
-                price: item.css('.droplist-price .label-price').text,
+                price: card.css('.droplist-price .label-price').text,
                 upvote: item.css('.progress-bar-success').text.to_i,
                 downvote: item.css('.progress-bar-danger').text.to_i
               )
@@ -62,7 +62,7 @@ namespace :product_updater do
               product.downvote = item.css('.progress-bar-danger').text.to_i
 
               # Where i use .changes to either go onto next iteration or add to the counters.
-              product.changes.include?("upvote") || product.changes.include?("downvote") || product.changes.empty? ? next : Thread.new { updated += 1; updated2 += 1}
+              product.changes.include?("upvote") || product.changes.include?("downvote") || product.changes.empty? ? Thread.new { product.save; next; } : Thread.new { product.save; updated += 1; updated2 += 1}
               product.save
               next
             end
