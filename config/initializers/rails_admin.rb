@@ -34,6 +34,18 @@ RailsAdmin.config do |config|
     end
   end
   
+  config.model 'Product' do
+    list do
+      field :id
+      field :title
+      field :price
+      field :dropweek
+      field :filter
+      field :hype
+      field :hype_price
+    end
+  end
+  
   ## == Cancan ==
   # config.authorize_with :cancan
 

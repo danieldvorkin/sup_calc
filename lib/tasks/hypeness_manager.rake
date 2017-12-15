@@ -58,13 +58,15 @@ namespace :hypeness_manager do
     
     # Ebay each of the products
     Product.all.each do |prod|
+      name = prod.name.include?("Supreme") ? prod.name : "Supreme " + prod.name
       puts "\n======================================="
-      puts "Product: #{prod.name}"
+      puts "Product: #{name}"
       puts "Active: #{!prod.price.empty?}"
       puts "=======================================\n"
       next if prod.price.empty?
       # Document holding each product result list
-      doc = Nokogiri::HTML(open(URI.parse(URI.encode("https://www.ebay.com/sch/i.html?LH_BIN=1&_ipg=100&rt=nc&_nkw=#{prod[:name].gsub(" ", "+")}"))))
+      
+      doc = Nokogiri::HTML(open(URI.parse(URI.encode("https://www.ebay.com/sch/i.html?LH_BIN=1&_ipg=100&rt=nc&_nkw=#{name.gsub(" ", "+")}"))))
       prices = []
       
       # Pull numbers from each product
