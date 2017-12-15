@@ -70,7 +70,8 @@
               <div class="col s12">
                 <div class="section">
                   <h6><%= prod[:name] %></h6>
-                  <table class="responsive-table">
+                  <hr/><br/>
+                  <table>
                     <thead>
                       <tr>
                         <th>Sub Total</th>
@@ -82,23 +83,23 @@
                     <tbody>
                       <tr>
                         <td><%= prod.label %></td>
-                        <td><%= WelcomeHelper.subtotal_price(prod.label.split(" ")[1]) %></td>
-                        <td><%= WelcomeHelper.can_price(prod.label.split(" ")[1]) %></td>
+                        <td><%= WelcomeHelper.subtotal_price(prod.label) %></td>
+                        <td><%= WelcomeHelper.can_price(prod.label) %></td>
                       </tr>
                     </tbody>
-                  </table>
-                  <table class="responsive-table">
+                  </table><br/>
+                  <table>
                     <thead>
                       <tr>
                         <th>Source</th>
-                        <th>Hypeness</th>
+                        <th>Rank</th>
                         <th>Resell $$</th>
                       </tr>
                     </thead>
 
                     <tbody>
                       <tr>
-                        <td>Ebay Canada</td>
+                        <td>Ebay CAD</td>
                         <td><%= prod.hype %></td>
                         <td>$ <%= prod.hype_price %></td>
                       </tr>
