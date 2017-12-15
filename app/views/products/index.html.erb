@@ -4,7 +4,8 @@
       <div class="col sm12 m6 l6" href="#item_<%= index %>!">
         <div class="card horizontal" id="prod_<%= index %>_week">
           <div class="card-image">
-            <%= image_tag "https://supremecommunity.com#{Product.all.where(dropweek: week).first.link}", style: 'max-height:390px;' %>
+            <% randNum = rand(0..Product.all.where(dropweek: week).length - 1) %>
+            <%= image_tag "https://supremecommunity.com#{Product.all.where(dropweek: week)[randNum].link}", style: 'max-height:390px;' %>
           </div>
           <div class="card-stacked">
             <div class="card-content">
