@@ -32,6 +32,7 @@
 .card .card-title {
   font-size: 15px !important;
   height: 90px !important;
+  display: initial !important;
 }
 .order-img {
   max-height: 100px;
@@ -432,7 +433,7 @@ footer {
     margin: 0 auto !important;
   }
   .card-collection {
-    height: 520px;
+    height: 496px;
     overflow-y: scroll;
     width: 85%;
     margin: 0 auto;

@@ -1,7 +1,7 @@
 <div class="row" style="margin-bottom:8%;">
   <div class="container">
     <% @weeks.each_with_index do |week, index| %>
-      <div class="col sm12 m6 l6" href="#item_<%= index %>!">
+      <div class="col sm12 m6 l6 xl4" href="#item_<%= index %>!">
         <div class="card horizontal" id="prod_<%= index %>_week">
           <div class="card-image">
             <% randNum = rand(0..Product.all.where(dropweek: week).length - 1) %>
