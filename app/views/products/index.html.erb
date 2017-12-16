@@ -9,9 +9,9 @@
           </div>
           <div class="card-stacked">
             <div class="card-content">
-              <p>Season: <%= ProductsHelper.get_season(week) %></p>
-              <p>Release: <%= ProductsHelper.get_week(week) %></p>
-              <p>Week #: <%= (@weeks.size - index - 1) %></p>
+              <h6>Season: <%= ProductsHelper.get_season(week) %></h6>
+              <h6>Release: <%= ProductsHelper.get_week(week) %></h6>
+              <h6>Week #: <%= (@weeks.size - index - 1) %></h6>
             </div>
             <div class="card-action">
               <%= link_to 'View!', specific_week_path(week), class: 'btn btn-default', style: 'width:100%;' %>
