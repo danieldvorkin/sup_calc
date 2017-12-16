@@ -51,6 +51,7 @@ RailsAdmin.config do |config|
       field :id
       field :email
       field :sign_in_count
+      field :last_sign_in_at
       field :orders
     end
   end
