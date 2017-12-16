@@ -46,6 +46,15 @@ RailsAdmin.config do |config|
     end
   end
   
+  config.model 'User' do
+    list do
+      field :id
+      field :email
+      field :sign_in_count
+      field :orders
+    end
+  end
+  
   ## == Cancan ==
   # config.authorize_with :cancan
 
