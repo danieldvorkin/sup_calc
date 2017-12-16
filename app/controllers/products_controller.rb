@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
     add_breadcrumb "< Dropweeks", :products_path
     
     # Dropweek/Products/Current Order Instance vars
-    @dropweek = toggle_slashes(params[:week])
+    @dropweek = ProductsHelper.full_label(params[:week])
     @products = Product.specific_week(params[:week])
     @order_item = current_order.order_items.new
     

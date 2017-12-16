@@ -7,6 +7,12 @@ module ProductsHelper
     year = newWeek.split("-")[1].split(/[^0-9]/).reject(&:empty?)
     "#{fLetter.capitalize}#{lLetter.capitalize}#{year[0]}"
   end
+  
+  def self.full_label(week)
+    newWeek = week.split("/").reject(&:empty?)
+    season = self.get_season(newWeek[1])
+    "#{newWeek[0].capitalize}: #{season} :: Drop: #{newWeek.last}"
+  end
 
   def self.get_week(week)
     week.split("/").shift(5).last
