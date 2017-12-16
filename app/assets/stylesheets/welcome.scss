@@ -39,7 +39,7 @@
 }
 .card-reveal {
   .card-title {
-    height: 35px !important;
+    height: 40px !important;
     margin-left: 90%;
     z-index: 22;
   }
@@ -394,6 +394,12 @@ footer {
     }
   }
 }
+.card-collection {
+  .card {
+    width: 34% !important;
+    margin: 10px 10px !important;
+  }
+}
 
 @media only screen and (min-width: 993px) {
   .container {
@@ -409,8 +415,11 @@ footer {
 
 // iPhone 6 (portrait)
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
-  .card {
-    width: 99% !important;
+  .card-collection {
+    .card {
+      width: 95% !important;
+      margin: 10px 10px !important;
+    }
   }
   .card .card-reveal {
     width: 100% !important;

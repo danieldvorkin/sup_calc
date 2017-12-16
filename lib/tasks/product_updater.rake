@@ -81,7 +81,7 @@ namespace :product_updater do
       completion_time: times.real.round(2)
     })
 
-    (count + updated) > 0 ? puts "New Products Added!! Product Updater Complete!!" : Thread.new { stat.destroy!; puts "Product Updater Complete!!!" }
+    (count + updated) > 0 ? Thread.new { puts "New Products Added!! Product Updater Complete!!" } : Thread.new { stat.destroy!; puts "Product Updater Complete!!!"; }
     (count + updated) > 160 ? UserMailer.products_updated(count, updated).deliver_now : Thread.new { stat.destroy!; puts 'No Major Updates'; }
   end
 end
