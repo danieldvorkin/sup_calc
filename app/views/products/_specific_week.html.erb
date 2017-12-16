@@ -1,4 +1,4 @@
-<div class="collections row container" style="margin-bottom: 12%;">
+<div class="collections row container" style="margin-bottom: 7%;">
   <br/>
   <h4 class="season-title"><%= @dropweek %></h4>
   <hr/>
@@ -42,7 +42,7 @@
            <div class="outer-meter" style="height:20px;">
              <div class="inner-meter" style="width: <%= (prod[:upvote] / (prod[:upvote] + prod[:downvote])) * 100 %>%;"></div>
            </div>
-            
+
             <%= form_for @order_item, remote: true do |f| %>
               <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
               <%= f.hidden_field :product_id, value: prod[:id] %>
@@ -66,7 +66,7 @@
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-            <div class="row" style="margin-bottom:0px !important;">
+            <div class="row" style="margin-top:40px !important;">
               <div class="col s12">
                 <div class="section">
                   <h6><%= prod[:name] %></h6>
@@ -87,7 +87,7 @@
                         <td><%= WelcomeHelper.can_price(prod.label) %></td>
                       </tr>
                     </tbody>
-                  </table><br/>
+                  </table>
                   <table>
                     <thead>
                       <tr>
@@ -119,14 +119,14 @@
   $(function(){
     $('.materialboxed').materialbox();
     $("#filter-<%= @filter %> .filter-btn img").css('opacity', '1.0')
-    
+
     if($(window).width() < 784) {
-      $(".filter-btn").click(function() { 
-        var targetDiv = $(this).attr('href'); 
+      $(".filter-btn").click(function() {
+        var targetDiv = $(this).attr('href');
         $('html, body').animate({
           scrollTop: $(".filter-section").offset().top - 85
-        }, 500); 
-      }); 
+        }, 500);
+      });
     }
   });
 </script>

@@ -74,14 +74,14 @@ namespace :product_updater do
         puts "===================================================="
       end
     }
-    stat.update_attributes({ 
-      status: "complete", 
-      products_added: count, 
-      products_updated: updated - 160, 
-      completion_time: times.real.round(2) 
+    stat.update_attributes({
+      status: "complete",
+      products_added: count,
+      products_updated: updated - 160,
+      completion_time: times.real.round(2)
     })
-    
-    puts (count + updated) > 0 ? "New Products Added!! Product Updater Complete!!" : "Product Updater Complete!!!"
-    (count + updated) > 160 ? UserMailer.products_updated(count, updated).deliver_now : Thread.new { puts 'No Major Updates'; }
+
+    (count + updated) > 0 ? puts "New Products Added!! Product Updater Complete!!" : Thread.new { stat.destroy!; puts "Product Updater Complete!!!" }
+    (count + updated) > 160 ? UserMailer.products_updated(count, updated).deliver_now : Thread.new { stat.destroy!; puts 'No Major Updates'; }
   end
 end
