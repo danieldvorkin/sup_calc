@@ -3,6 +3,10 @@ class OrdersController < ApplicationController
   def index
     @orders = current_user.orders.where(order_status_id: 2).order('updated_at DESC')
   end
+  
+  def show
+    @order = Order.find(params[:id])
+  end
 
   def destroy
     Order.find(params[:id]).destroy
