@@ -51,15 +51,19 @@ namespace :product_updater do
             else
               # The reason for this, is to use .changes to identify changes
               # update_attr will not return this info which i need to modify the counters.
-              product.dropweek = date
-              product.filter = item.attr('data-masonry-filter')
-              product.dataId = dataId
-              product.name = card.css('.card__body h5').text
-              product.title = card.css('.card__body h5').text
-              product.link = card.css('.card__top img').attr('src').value
-              product.price = card.css('.droplist-price .label-price').text
-              product.upvote = item.css('.progress-bar-success').text.to_i
-              product.downvote = item.css('.progress-bar-danger').text.to_i
+              product.dropweek  = date
+              product.filter    = item.attr('data-masonry-filter')
+              product.dataId    = dataId
+              product.name      = card.css('.card__body h5').text
+              product.title     = card.css('.card__body h5').text
+              product.link      = card.css('.card__top img').attr('src').value
+              product.price     = card.css('.droplist-price .label-price').text
+              newUpVote         = item.css('.progress-bar-success').text.to_i
+              newDownVote       = item.css('.progress-bar-danger').text.to_i
+              upVoteDiff        = newUpVote - product.upvote
+              downVoteDiff      = newDownVote - product.downvote
+              product.upvote    += upVoteDiff
+              product.downvote  += downVoteDiff
 
               # Where i use .changes to either go onto next iteration or add to the counters.
               product.changes.include?("upvote") || product.changes.include?("downvote") || product.changes.empty? ? Thread.new { product.save; next; } : Thread.new { product.save; updated += 1; updated2 += 1}

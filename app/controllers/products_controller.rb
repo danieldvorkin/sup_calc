@@ -14,7 +14,8 @@ class ProductsController < ApplicationController
     add_breadcrumb "< Dropweeks", :products_path
     
     # Dropweek/Products/Current Order Instance vars
-    @dropweek = ProductsHelper.full_label(params[:week])
+    @dropweek = params[:week]
+    @dropweek_param = toggle_slashes(params[:week])
     @products = Product.specific_week(params[:week])
     @order_item = current_order.order_items.new
     
@@ -25,7 +26,8 @@ class ProductsController < ApplicationController
   end
   
   def filter_product
-    @dropweek = params[:week]
+    @dropweek = toggle_slashes(params[:week], false)
+    @dropweek_param = toggle_slashes(params[:week])
     @filter = params[:filter] || "all"
     @filters = Product.filters
     @order_item = current_order.order_items.new
@@ -39,14 +41,6 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.js
     end
-  end
-
-  def get_season(week)
-    week.split("/").shift(3).last
-  end
-
-  def get_week(week)
-    week.split("/").shift(5).last
   end
   
   def toggle_slashes(str, toggle = true)
