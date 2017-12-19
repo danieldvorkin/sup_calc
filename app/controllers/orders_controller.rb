@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   end
   
   def show
-    @order = Order.find(params[:id])
+    current_user.has_role?(:admin) ? @order = Order.find(params[:id]) : redirect_back(fallback_location: root_path)
   end
 
   def destroy
