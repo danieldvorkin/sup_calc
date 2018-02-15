@@ -1,25 +1,31 @@
-<div class="row" style="margin-bottom:8%;">
-  <div class="container">
-    <% @weeks.each_with_index do |week, index| %>
-      <div class="col sm12 m6 l6 xl4" href="#item_<%= index %>!">
-        <div class="card horizontal" id="prod_<%= index %>_week">
-          <div class="card-image">
-            <% randNum = rand(0..Product.all.where(dropweek: week).length - 1) %>
-            <%= image_tag "https://supremecommunity.com#{Product.all.where(dropweek: week)[randNum].link}", style: 'max-height:390px;' %>
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <h6>Season: <%= ProductsHelper.get_season(week) %></h6>
-              <h6>Release: <%= ProductsHelper.get_week(week) %></h6>
-              <h6>Week #: <%= (@weeks.size - index - 1) %></h6>
+<br/>
+<% @seasons.each do |season| %>
+  <div class="row" style="margin-bottom:8%;">
+    <div class="container">
+      <h5><%= season %></h5><hr/>
+      <% @weeks.each_with_index do |week, index| %>
+        <% if ProductsHelper.get_season(week) == season %>
+          <div class="col sm12 m6 l6 xl4" href="#item_<%= index %>!">
+            <div class="card horizontal" id="prod_<%= index %>_week">
+              <div class="card-image">
+                <% randNum = rand(0..Product.all.where(dropweek: week).length - 1) %>
+                <%= image_tag "https://supremecommunity.com#{Product.all.where(dropweek: week)[randNum].link}", style: 'max-height:390px;' %>
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <h6>Season: <%= ProductsHelper.get_season(week) %></h6>
+                  <h6>Release: <%= ProductsHelper.get_week(week) %></h6>
+                  <% week_num = @weeks.map{|d| ProductsHelper.get_season(d) == season ? d : next}.compact.count - index %>
+                  <h6>Week #: <%= week_num %></h6>
+                </div>
+                <div class="card-action">
+                  <%= link_to 'View!', specific_week_path(week), class: 'btn btn-default', style: 'width:100%;' %>
+                </div>
+              </div>
             </div>
-            <div class="card-action">
-              <%= link_to 'View!', specific_week_path(week), class: 'btn btn-default', style: 'width:100%;' %>
-            </div>
           </div>
-        </div>
-      </div>
-    <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-  <br/>
-</div>
+<% end %>
