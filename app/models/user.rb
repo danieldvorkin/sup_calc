@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   before_create :set_default_role
+  after_create :send_admin_mail
 
   rolify
   # Include default devise modules. Others available are:
@@ -26,5 +27,9 @@ class User < ApplicationRecord
   private
   def set_default_role
     self.add_role :user
+  end
+
+  def send_admin_mail
+    UserMailer.new_user(self)
   end
 end
